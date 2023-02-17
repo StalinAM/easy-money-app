@@ -1,15 +1,28 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import GlobalStyles from './style/GlobalStyles'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
+import { dark } from './style/Theme'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className='App'>
-      <SignIn />
-      <SignUp />
-    </div>
+    <>
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <>
+                <SignIn />
+                <SignUp />
+              </>
+            }
+          />
+        </Routes>
+      </ThemeProvider>
+    </>
   )
 }
 
