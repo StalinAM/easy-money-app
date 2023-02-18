@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         overflow-x: hidden;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto', sans-serif;
         background-color: #302C42;
         /* @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
@@ -39,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
         } */
     }
     input, textarea{
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
     input:focus, textarea:focus{
         outline: none;
@@ -66,7 +66,7 @@ const GlobalStyles = createGlobalStyle`
         cursor: pointer;
     }
     button{
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Roboto', sans-serif;
         cursor: pointer;
         border: none;
         outline: none;
