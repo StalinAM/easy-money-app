@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
+import { useNavigate } from 'react-router-dom'
 function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
   const signIn = async (e) => {
     e.preventDefault()
     try {
@@ -12,7 +14,7 @@ function SignIn() {
         email,
         password
       )
-      console.log(userCredential)
+      navigate('/dashboard')
     } catch (error) {
       console.error(error)
     }
