@@ -1,10 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyles from './style/GlobalStyles'
-import SignIn from './components/auth/SignIn'
-import SignUp from './components/auth/SignUp'
 import { dark } from './style/Theme'
-import Home from './components/Home'
+import GlobalStyles from './style/GlobalStyles'
+
+import Home from './routes/Home'
+import Dashboard from './routes/Dashboard'
+import Profile from './routes/Profile'
+import SignIn from './routes/SignIn'
+import SignUp from './routes/SignUp'
 
 function App() {
   return (
@@ -13,8 +16,10 @@ function App() {
       <ThemeProvider theme={dark}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='login' element={<SignIn />} />
+          <Route path='signin' element={<SignIn />} />
           <Route path='signup' element={<SignUp />} />
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='u/:username' element={<Profile />} />
         </Routes>
       </ThemeProvider>
     </>
