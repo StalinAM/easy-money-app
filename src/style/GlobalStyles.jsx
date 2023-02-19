@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
     body{
         overflow-x: hidden;
         font-family: 'Roboto', sans-serif;
-        background-color: #302C42;
+        background-color: #001220;
         /* @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         } */
