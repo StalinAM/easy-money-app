@@ -1,7 +1,16 @@
 import React from 'react'
+import HeaderHome from '../components/HeaderHome'
+import MainContent from '../components/MainContent'
 
 function Home() {
-  return <main>{console.log(import.meta.env.VITE_APIKEY)}</main>
+  return (
+    <>
+      <HeaderHome />
+      <main>
+        <MainContent />
+      </main>
+    </>
+  )
 }
 
 export default Home
