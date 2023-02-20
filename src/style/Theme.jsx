@@ -13,9 +13,5 @@ export const dark = {
   lFont: '1.5rem',
   mFont: '1.125rem',
   sFont: '1rem',
-  xsFont: '0.75rem',
-
-  // Box Shadow
-  box: '0 0 0 20px rgba(0, 0, 0, 0.25)',
-  mBox: '0 0 0 10px rgba(0, 0, 0, 0.25)'
+  xsFont: '0.75rem'
 }
