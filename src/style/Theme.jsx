@@ -4,7 +4,7 @@ export const dark = {
   blue: '#0066FF',
   lightBlue: '#0033bb',
   darkBlue: '#000e33',
-  xLightPurple: '#85C8FD',
+  xLightBlue: '#85C8FD',
   gray: '#A0A8AF',
   // Font size
   numSize: '4rem',
