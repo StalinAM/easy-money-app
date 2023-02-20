@@ -1,17 +1,18 @@
 export const dark = {
   // Colors
-  white: '#e3e3e3',
-  lightPurple: '#C0B7E8',
-  mLightPurple: '#8176AF',
-  xLightPurple: '#403A5F',
-  darkPurple: '#211E2E',
+  white: '#dce7f7',
+  blue: '#0066FF',
+  lightBlue: '#0033bb',
+  darkBlue: '#000e33',
+  xLightPurple: '#85C8FD',
+  gray: '#A0A8AF',
   // Font size
   numSize: '4rem',
-  xxlFont: '2.875rem',
+  xxlFont: '3rem',
   xlFont: '2.25rem',
   lFont: '1.5rem',
-  mFont: '1rem',
-  sFont: '0.875rem',
+  mFont: '1.125rem',
+  sFont: '1rem',
   xsFont: '0.75rem',
 
   // Box Shadow
