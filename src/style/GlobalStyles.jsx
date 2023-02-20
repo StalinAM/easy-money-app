@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import background from '../assets/background.svg'
 const GlobalStyles = createGlobalStyle`
     *,*::before,*::after{
         box-sizing: border-box;
@@ -11,17 +12,25 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         overflow-x: hidden;
-        font-family: 'Roboto', sans-serif;
-        background-color: #001220;
+        width: 100%;
+        min-height: 100vh;
+        font-family: 'Nunito', sans-serif;
+        background: url(${background});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
         /* @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         } */
     }
+    header{
+        padding: 3rem 6rem;
+    }
     main{
         display: flex;
         flex-direction: column;
-        gap: 6rem;
         padding: 0 6rem;
+        gap: 6rem;
         /* @media screen and (max-width: 1280px) {
             padding: 0 3rem;
         }
@@ -38,8 +47,15 @@ const GlobalStyles = createGlobalStyle`
             padding: 0 1rem;
         } */
     }
+    section{
+        padding: 6rem 0 2rem;
+    }
+    article{
+        max-width: 65rem;
+        margin: 0 auto;
+    }
     input, textarea{
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Nunito', sans-serif;
     }
     input:focus, textarea:focus{
         outline: none;
@@ -52,13 +68,9 @@ const GlobalStyles = createGlobalStyle`
     h1,h2,h3,h4,h5,h6{
         margin: 0;
         padding: 0;
-        color: #e3e3e3;
     }
     ul{
         list-style: none;
-    }
-    p{
-        color: white;
     }
     a{
         color: inherit;
@@ -66,7 +78,7 @@ const GlobalStyles = createGlobalStyle`
         cursor: pointer;
     }
     button{
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Nunito', sans-serif;
         cursor: pointer;
         border: none;
         outline: none;
