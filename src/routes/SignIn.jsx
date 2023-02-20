@@ -1,14 +1,105 @@
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Cointainer = styled.main`
-  min-height: 100vh;
-
-  max-width: 600px;
+const Container = styled.section`
+  display: flex;
+  justify-content: center;
+`
+const Content = styled.div`
+  background-color: ${(props) => props.theme.white};
+  position: relative;
+  border-radius: 30px;
+  width: 425px;
+  padding: 5.5rem 0 3rem;
+`
+const Header = styled.header`
+  position: absolute;
+  width: 75%;
+  background-color: ${(props) => props.theme.blue};
   margin: auto;
+  padding: 1rem 0;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: #dce7f7 0px 0px 0px 2px;
+  h1 {
+    color: ${(props) => props.theme.white};
+    font-size: ${(props) => props.theme.lFont};
+  }
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -50%);
+`
+const FormC = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  gap: 1.125rem;
+  margin: 0 auto;
+`
+const BoxData = styled.section`
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+`
+const Input = styled.input`
+  border: 2px solid ${(props) => props.theme.xLightBlue};
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: none;
+  color: ${(props) => props.theme.darkBlue};
+  font-weight: 400;
+  font-size: ${(props) => props.theme.mFont};
+  &::placeholder {
+    color: ${(props) => props.theme.gray};
+  }
+`
+const SubmitBtn = styled.button`
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: ${(props) => props.theme.white};
+  font-weight: 700;
+  background-color: ${(props) => props.theme.blue};
+  font-size: ${(props) => props.theme.mFont};
+  &:hover {
+    background-color: ${(props) => props.theme.lightBlue};
+  }
+`
+const SignUp = styled.p`
+  display: flex;
+  gap: 1.125rem;
+  color: ${(props) => props.theme.gray};
+  a {
+    font-weight: 700;
+    color: ${(props) => props.theme.blue};
+    position: relative;
+
+    &:hover {
+      color: ${(props) => props.theme.lightBlue};
+    }
+  }
+`
+const SigninRS = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  i {
+    cursor: pointer;
+    font-size: 1.7rem;
+    color: ${(props) => props.theme.white};
+    &:hover {
+      color: ${(props) => props.theme.lightBlue};
+    }
+  }
 `
 function SignIn() {
   const [email, setEmail] = useState('')
@@ -28,24 +119,38 @@ function SignIn() {
     }
   }
   return (
-    <Cointainer>
-      <form onSubmit={signIn}>
-        <h1>Login In</h1>
-        <input
-          type='email'
-          placeholder='Ingresa un correo'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type='password'
-          placeholder='Ingresa una contraseña'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type='submit'>Log in</button>
-      </form>
-    </Cointainer>
+    <Container>
+      <Content>
+        <Header>
+          <h1>Iniciar sesión</h1>
+          <SigninRS>
+            <i className='uil uil-facebook-f'></i>
+            <i className='uil uil-github-alt'></i>
+            <i className='uil uil-microsoft'></i>
+          </SigninRS>
+        </Header>
+        <FormC onSubmit={signIn}>
+          <BoxData>
+            <Input
+              type='email'
+              placeholder='Ingresa un correo'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type='password'
+              placeholder='Ingresa una contraseña'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </BoxData>
+          <SubmitBtn type='submit'>Iniciar sesión</SubmitBtn>
+          <SignUp>
+            ¿No tienes una cuenta?<Link to='/signup'>Registrarse</Link>
+          </SignUp>
+        </FormC>
+      </Content>
+    </Container>
   )
 }
 
