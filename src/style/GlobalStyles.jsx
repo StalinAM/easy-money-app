@@ -26,27 +26,6 @@ const GlobalStyles = createGlobalStyle`
     header{
         padding: 3rem 6rem;
     }
-    main{
-        display: flex;
-        flex-direction: column;
-        padding: 0 6rem;
-        gap: 6rem;
-        /* @media screen and (max-width: 1280px) {
-            padding: 0 3rem;
-        }
-        @media screen and (max-width: 1080px) {
-            padding: 0 1.5rem;
-            filter: ${(props) =>
-              props.toggle ? 'blur(5px) brightness(0.7)' : 'none'};
-            pointer-events: ${(props) => (props.show ? 'none' : '')};
-            user-select: ${(props) => (props.show ? 'none' : '')};
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
-        @media screen and (max-width: 480px) {
-            padding: 0 1rem;
-        } */
-    }
     section{
         padding: 6rem 0 2rem;
     }
