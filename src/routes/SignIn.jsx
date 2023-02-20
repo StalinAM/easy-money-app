@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Cointainer = styled.main`
+  min-height: 100vh;
+
+  max-width: 600px;
+  margin: auto;
+`
 function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -20,7 +28,7 @@ function SignIn() {
     }
   }
   return (
-    <div>
+    <Cointainer>
       <form onSubmit={signIn}>
         <h1>Login In</h1>
         <input
@@ -37,7 +45,7 @@ function SignIn() {
         />
         <button type='submit'>Log in</button>
       </form>
-    </div>
+    </Cointainer>
   )
 }
 
