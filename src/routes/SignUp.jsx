@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 const Container = styled.section`
-  max-width: 600px;
   display: flex;
   justify-content: center;
 `
@@ -12,31 +11,42 @@ const Content = styled.div`
   background-color: ${(props) => props.theme.white};
   position: relative;
   border-radius: 30px;
+  width: 425px;
+  padding: 4rem 0;
 `
 const Header = styled.header`
   position: absolute;
-  width: 70%;
-  background-color: ${(props) => props.theme.lightBlue};
+  width: 75%;
+  background-color: ${(props) => props.theme.blue};
   margin: auto;
   padding: 1rem 0;
   border-radius: 30px;
   display: flex;
   justify-content: center;
+  box-shadow: #dce7f7 0px 0px 0px 2px;
   h1 {
     color: ${(props) => props.theme.white};
     font-size: ${(props) => props.theme.lFont};
   }
+  top: 0;
   right: 50%;
   transform: translate(50%, -50%);
 `
 const FormC = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  gap: 1.5rem;
+  max-width: 350px;
+  gap: 1.125rem;
   margin: 0 auto;
 `
-const Imput = styled.input`
+const BoxData = styled.section`
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+`
+const Input = styled.input`
   border: 2px solid ${(props) => props.theme.xLightBlue};
   padding: 0.75rem 1rem;
   border-radius: 12px;
@@ -49,13 +59,29 @@ const Imput = styled.input`
   }
 `
 const SubmitBtn = styled.button`
-  margin-top: 2.5rem;
   padding: 0.75rem 1rem;
   border-radius: 12px;
   color: ${(props) => props.theme.white};
   font-weight: 700;
   background-color: ${(props) => props.theme.blue};
   font-size: ${(props) => props.theme.mFont};
+  &:hover {
+    background-color: ${(props) => props.theme.lightBlue};
+  }
+`
+const Login = styled.p`
+  display: flex;
+  gap: 1.125rem;
+  color: ${(props) => props.theme.gray};
+  a {
+    font-weight: 700;
+    color: ${(props) => props.theme.blue};
+    position: relative;
+
+    &:hover {
+      color: ${(props) => props.theme.lightBlue};
+    }
+  }
 `
 function SignUp() {
   const [name, setName] = useState('')
@@ -78,36 +104,39 @@ function SignUp() {
     } catch (error) {}
   }
   return (
-    <main>
-      <Container>
-        <Content>
-          <Header>
-            <h1>Crear una cuenta</h1>
-          </Header>
-          <FormC onSubmit={signUp}>
-            <Imput
+    <Container>
+      <Content>
+        <Header>
+          <h1>Crear una cuenta</h1>
+        </Header>
+        <FormC onSubmit={signUp}>
+          <BoxData>
+            <Input
               type='text'
-              placeholder='Ingresa tu Nombre'
+              placeholder='Ingrese tu nombre'
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <Imput
+            <Input
               type='email'
-              placeholder='Ingresa un correo'
+              placeholder='Ingrese un correo'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Imput
+            <Input
               type='password'
-              placeholder='Ingresa una contraseña'
+              placeholder='Ingrese una contraseña'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <SubmitBtn type='submit'>Sign Up</SubmitBtn>
-          </FormC>
-        </Content>
-      </Container>
-    </main>
+          </BoxData>
+          <SubmitBtn type='submit'>Registrarse</SubmitBtn>
+          <Login>
+            ¿Ya tienes una cuenta?<Link to='/signin'>Iniciar sesión</Link>
+          </Login>
+        </FormC>
+      </Content>
+    </Container>
   )
 }
 
