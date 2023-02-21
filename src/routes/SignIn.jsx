@@ -4,9 +4,11 @@ import { auth } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Container = styled.section`
+const Container = styled.main`
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  align-items: center;
 `
 const Content = styled.div`
   background-color: ${(props) => props.theme.white};
