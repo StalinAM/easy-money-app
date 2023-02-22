@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+
 const Container = styled.main`
   display: flex;
   justify-content: center;
