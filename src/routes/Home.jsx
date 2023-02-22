@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import HeaderHome from '../components/HeaderHome'
 import MainContent from '../components/MainContent'
+
 const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
