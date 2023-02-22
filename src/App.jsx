@@ -13,9 +13,15 @@ import { AuthContext } from './context/Auth'
 
 function App() {
   const { currentUser } = useContext(AuthContext)
-  const ProtectRoute = ({ children }) => {
+  const ProtectDashboard = ({ children }) => {
     if (!currentUser) {
       return <Navigate to='/signin' />
+    }
+    return children
+  }
+  const ProtectLogin = ({ children }) => {
+    if (currentUser) {
+      return <Navigate to='/dashboard' />
     }
     return children
   }
@@ -25,14 +31,28 @@ function App() {
       <ThemeProvider theme={dark}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='signin' element={<SignIn />} />
-          <Route path='signup' element={<SignUp />} />
+          <Route
+            path='signin'
+            element={
+              <ProtectLogin>
+                <SignIn />
+              </ProtectLogin>
+            }
+          />
+          <Route
+            path='signup'
+            element={
+              <ProtectLogin>
+                <SignUp />
+              </ProtectLogin>
+            }
+          />
           <Route
             path='dashboard'
             element={
-              <ProtectRoute>
+              <ProtectDashboard>
                 <Dashboard />
-              </ProtectRoute>
+              </ProtectDashboard>
             }
           />
           <Route path='u/:username' element={<Profile />} />
