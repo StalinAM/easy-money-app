@@ -1,25 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  getBytes
-} from 'firebase/storage'
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  getDoc,
-  query,
-  where,
-  setDoc,
-  deleteDoc
-} from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,

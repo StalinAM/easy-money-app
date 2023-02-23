@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../firebase/firebase'
+import { loginUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -106,19 +105,12 @@ const SigninRS = styled.div`
 function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
   const navigate = useNavigate()
+
   const signIn = async (e) => {
     e.preventDefault()
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      navigate('/dashboard')
-    } catch (error) {
-      console.error(error)
-    }
+    loginUser(email, password, navigate)
   }
   return (
     <Container>
