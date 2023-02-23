@@ -10,11 +10,15 @@ const Btn = styled(Link)`
   color: ${(props) => props.theme.white};
   transition: all 0.3s ease;
   &:hover {
-    transform:  scale(1.1);
+    transform: scale(1.1);
   }
 `
-function Button({ text, link }) {
-  return <Btn to={link}>{text}</Btn>
+function Button({ text, link, handleClick = () => {} }) {
+  return (
+    <Btn onClick={handleClick} to={link}>
+      {text}
+    </Btn>
+  )
 }
 
 export default Button
