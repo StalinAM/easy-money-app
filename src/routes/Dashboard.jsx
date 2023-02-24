@@ -84,6 +84,9 @@ function Dashboard() {
         />
       </Menu>
       <Navbar></Navbar>
+      <ContainerTotal>
+        
+      </ContainerTotal>
       <ContainerTable>
         <TitleTable>Ultimas transacciones</TitleTable>
         <Table>
