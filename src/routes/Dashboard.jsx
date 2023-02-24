@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import Button from '../components/Button'
+import RowTable from '../components/RowTable'
 import { logoutUser } from '../firebase/services'
 const Container = styled.main`
   width: 100%;
@@ -37,20 +38,30 @@ const ContainerTable = styled.div`
   padding: 1.5rem;
   grid-column: 2/5;
   grid-row: 3/5;
-  table {
-    width: 100%;
-    tr {
-      display: grid;
-      justify-items: start;
-      grid-template-columns: 1fr 70% 1fr 1fr;
-      border-bottom: 1px solid #000e33;
-    }
-  }
 `
 const TitleTable = styled.header`
   color: ${(props) => props.theme.darkBlue};
   padding: 0;
   font-size: ${(props) => props.theme.mFont};
+  margin-bottom: 1rem;
+`
+const Table = styled.table`
+  width: 100%;
+  thead > tr {
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: ${(props) => props.theme.xsFont};
+    color: #000e3361;
+  }
+  tr {
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 1fr 70% 1fr 1fr;
+    border-bottom: 1px solid #000e3328;
+    td {
+      padding: 0.5rem 0.25rem;
+    }
+  }
 `
 const handleClick = () => {
   logoutUser()
@@ -59,7 +70,13 @@ function Dashboard() {
   return (
     <Container>
       <Menu>
-        <img src={logo} alt='logo of easymoney' />
+        <div>
+          <img src={logo} alt='logo of easymoney' />
+          <br />
+          <ul>
+            <li>General</li>
+          </ul>
+        </div>
         <Button
           handleClick={handleClick}
           text='Cerrar sessión'
@@ -69,7 +86,7 @@ function Dashboard() {
       <Navbar></Navbar>
       <ContainerTable>
         <TitleTable>Ultimas transacciones</TitleTable>
-        <table>
+        <Table>
           <thead>
             <tr>
               <th>Fecha</th>
@@ -80,25 +97,24 @@ function Dashboard() {
           </thead>
           <tbody>
             <tr>
-              <td>12/12/23</td>
-              <td>Carne</td>
-              <td></td>
-              <td>$10</td>
+              <RowTable fecha='03/12/2023' description='Carne' ingreso='$10' />
             </tr>
             <tr>
-              <td>12/12/23</td>
-              <td>servicios basicos</td>
-              <td>$80</td>
-              <td></td>
+              <RowTable
+                fecha='03/12/2023'
+                description='Almuerzo'
+                egreso='$20'
+              />
             </tr>
             <tr>
-              <td>12/12/23</td>
-              <td>Carne</td>
-              <td></td>
-              <td>$10</td>
+              <RowTable
+                fecha='03/12/2023'
+                description='Servicio Basicos'
+                egreso='$100'
+              />
             </tr>
           </tbody>
-        </table>
+        </Table>
       </ContainerTable>
     </Container>
   )
