@@ -17,6 +17,7 @@ const Icon = styled.i`
   position: absolute;
   color: ${(props) => props.theme.white};
   background-color: ${(props) => props.color};
+  border: 2px solid ${(props) => props.theme.white};
   padding: 0.938rem 1.563rem;
   font-size: 2.5rem;
   border-radius: 12px;
