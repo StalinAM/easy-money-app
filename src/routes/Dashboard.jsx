@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import Button from '../components/Button'
 import RowTable from '../components/RowTable'
+import TotalInfo from '../components/TotalInfo'
 import { logoutUser } from '../firebase/services'
 const Container = styled.main`
   width: 100%;
@@ -10,8 +11,8 @@ const Container = styled.main`
   padding: 4rem 6rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: 350px 1fr 1fr 1fr;
-  grid-template-rows: 150px 1fr 1fr 1fr;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 100px 1fr 1fr 1fr;
   background-color: ${(props) => props.theme.blue};
 `
 const Menu = styled.aside`
@@ -30,13 +31,13 @@ const Menu = styled.aside`
   }
 `
 const Navbar = styled.nav`
-  grid-column: 2/5;
+  grid-column: 2;
 `
 const ContainerTable = styled.div`
   background-color: ${(props) => props.theme.white};
   border-radius: 12px;
   padding: 1.5rem;
-  grid-column: 2/5;
+  grid-column: 2;
   grid-row: 3/5;
 `
 const TitleTable = styled.header`
@@ -56,12 +57,18 @@ const Table = styled.table`
   tr {
     display: grid;
     justify-items: start;
-    grid-template-columns: 1fr 70% 1fr 1fr;
+    grid-template-columns: 1fr 60% 1fr 1fr;
     border-bottom: 1px solid #000e3328;
     td {
       padding: 0.5rem 0.25rem;
     }
   }
+`
+const ContainerTotal = styled.div`
+  padding-top: 2.9rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 `
 const handleClick = () => {
   logoutUser()
@@ -85,7 +92,15 @@ function Dashboard() {
       </Menu>
       <Navbar></Navbar>
       <ContainerTotal>
-        
+        <TotalInfo
+          icon='stack'
+          color='#000e33'
+          title='Valor total'
+          value='130'
+        />
+        <TotalInfo icon='withdraw' color='#429c47' title='Ingreso' value='30' />
+        <TotalInfo icon='insert' color='#c20f00' title='Egreso' value='200' />
+        <TotalInfo icon='bill' color='#000e33' title='Mes pasado' value='40' />
       </ContainerTotal>
       <ContainerTable>
         <TitleTable>Ultimas transacciones</TitleTable>
