@@ -16,7 +16,7 @@ const Container = styled.article`
 const Icon = styled.i`
   position: absolute;
   color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.blue};
   border: 2px solid ${(props) => props.theme.white};
   padding: 0.938rem 1.563rem;
   font-size: 2.5rem;
@@ -28,7 +28,7 @@ const Icon = styled.i`
 function TotalInfo({ icon, color, title, value }) {
   return (
     <Container>
-      <Icon color={color} className={`uil uil-money-${icon}`} />
+      <Icon className={`uil uil-money-${icon}`} />
       <p>{title}</p>
       <h2>${value}</h2>
     </Container>
