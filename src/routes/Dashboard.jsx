@@ -31,7 +31,11 @@ const Menu = styled.aside`
   }
 `
 const Navbar = styled.nav`
+  display: flex;
   grid-column: 2;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
 `
 const ContainerTable = styled.div`
   background-color: ${(props) => props.theme.white};
@@ -70,10 +74,16 @@ const ContainerTotal = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 `
-const handleClick = () => {
-  logoutUser()
-}
+const ImgProfile = styled.div`
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: black;
+`
 function Dashboard() {
+  const handleClick = () => {
+    logoutUser()
+  }
   return (
     <Container>
       <Menu>
@@ -90,7 +100,10 @@ function Dashboard() {
           link='/signin'
         />
       </Menu>
-      <Navbar></Navbar>
+      <Navbar>
+        <h2>Stalin</h2>
+        <ImgProfile />
+      </Navbar>
       <ContainerTotal>
         <TotalInfo
           icon='stack'
