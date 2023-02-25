@@ -6,7 +6,7 @@ import { useContext } from 'react'
 
 import Home from './routes/Home'
 import Dashboard from './routes/Dashboard'
-import Profile from './routes/Profile'
+import Profile from './components/Profile'
 import SignIn from './routes/SignIn'
 import SignUp from './routes/SignUp'
 import { AuthContext } from './context/Auth'
