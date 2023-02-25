@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import RowTable from '../components/RowTable'
 import TotalInfo from '../components/TotalInfo'
 import { logoutUser } from '../firebase/services'
+import Profile from '../components/Profile'
 const Container = styled.main`
   width: 100%;
   min-height: 100vh;
@@ -30,13 +31,7 @@ const Menu = styled.aside`
       brightness(105%) contrast(103%);
   }
 `
-const Navbar = styled.nav`
-  display: flex;
-  grid-column: 2;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-`
+
 const ContainerTable = styled.div`
   background-color: ${(props) => props.theme.white};
   border-radius: 12px;
@@ -56,13 +51,13 @@ const Table = styled.table`
     padding-bottom: 1rem;
     text-transform: uppercase;
     font-size: ${(props) => props.theme.xsFont};
-    color: #000e3361;
+    color: ${(props) => props.theme.gray};
   }
   tr {
     display: grid;
     justify-items: start;
     grid-template-columns: 1fr 60% 1fr 1fr;
-    border-bottom: 1px solid #000e3328;
+    border-bottom: 2px solid ${(props) => props.theme.xLightBlue};
     td {
       padding: 0.5rem 0.25rem;
     }
@@ -74,12 +69,7 @@ const ContainerTotal = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 `
-const ImgProfile = styled.div`
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: black;
-`
+
 function Dashboard() {
   const handleClick = () => {
     logoutUser()
@@ -100,10 +90,7 @@ function Dashboard() {
           link='/signin'
         />
       </Menu>
-      <Navbar>
-        <h2>Stalin</h2>
-        <ImgProfile />
-      </Navbar>
+      <Profile />
       <ContainerTotal>
         <TotalInfo
           icon='stack'
