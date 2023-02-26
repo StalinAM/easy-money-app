@@ -82,6 +82,7 @@ function Dashboard() {
           <br />
           <ul>
             <li>General</li>
+            <li>Tablas</li>
           </ul>
         </div>
         <Button
