@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { loginUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { Input } from '../style/StyleComponents'
 
 const Container = styled.main`
   display: flex;
@@ -51,18 +52,7 @@ const BoxData = styled.section`
   gap: 1.5rem;
   margin-bottom: 2rem;
 `
-const Input = styled.input`
-  border: 2px solid ${(props) => props.theme.xLightBlue};
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: none;
-  color: ${(props) => props.theme.darkBlue};
-  font-weight: 400;
-  font-size: ${(props) => props.theme.mFont};
-  &::placeholder {
-    color: ${(props) => props.theme.gray};
-  }
-`
+
 const SubmitBtn = styled.button`
   padding: 0.75rem 1rem;
   border-radius: 12px;
