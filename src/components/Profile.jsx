@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
+import NewItem from './NewItem'
 
 const ImgProfile = styled.div`
   width: 64px;
@@ -12,20 +13,40 @@ const ImgProfile = styled.div`
 const Navbar = styled.nav`
   display: flex;
   grid-column: 2;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   h2 {
     text-transform: capitalize;
     color: ${(props) => props.theme.white};
   }
 `
+const BtnModal = styled.button`
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: ${(props) => props.theme.mFont};
+  background-color: ${(props) => props.theme.lightBlue};
+  color: ${(props) => props.theme.white};
+  &:hover {
+    border: 1px solid ${(props) => props.theme.white};
+  }
+`
 function Profile() {
   const { currentUser } = useContext(AuthContext)
+  const [active, setActive] = useState(false)
   return (
     <Navbar>
-      <h2>{currentUser.displayName}</h2>
-      <ImgProfile />
+      <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
+      <NewItem active={active} setActive={setActive} />
+      <div>
+        <h2>{currentUser.displayName}</h2>
+        <ImgProfile />
+      </div>
     </Navbar>
   )
 }
