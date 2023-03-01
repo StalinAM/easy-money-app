@@ -19,11 +19,11 @@ const Navbar = styled.nav`
   div {
     display: flex;
     align-items: center;
-    gap: 1rem;
   }
   h2 {
     text-transform: capitalize;
     color: ${(props) => props.theme.white};
+    margin-right: 1rem;
   }
 `
 const BtnModal = styled.button`
