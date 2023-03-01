@@ -29,7 +29,7 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: #dce7f7 0px 0px 0px 2px;
+  box-shadow: #ffffff 0px 0px 0px 2px;
   h1 {
     color: ${(props) => props.theme.white};
     font-size: ${(props) => props.theme.lFont};

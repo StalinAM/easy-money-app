@@ -43,10 +43,6 @@ const FormC = styled.form`
   gap: 1.125rem;
   margin: 0 auto;
 `
-const DateC = styled(DatePicker)`
-  border: none;
-  color: green;
-`
 function NewItem({ active, setActive }) {
   const [date, setDate] = useState('')
   const [description, setDescription] = useState('')
@@ -62,7 +58,7 @@ function NewItem({ active, setActive }) {
                 adapterLocale={'es'}
                 dateAdapter={AdapterDayjs}
               >
-                <DateC
+                <DatePicker
                   label='Basic example'
                   value={date}
                   onChange={(newValue) => {
