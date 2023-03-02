@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Input } from '../style/StyleComponents'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -43,10 +43,32 @@ const FormC = styled.form`
   gap: 1.125rem;
   margin: 0 auto;
 `
+const SubmitBtn = styled.button`
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: ${(props) => props.theme.white};
+  font-weight: 700;
+  background-color: ${(props) => props.theme.blue};
+  font-size: ${(props) => props.theme.mFont};
+  &:hover {
+    background-color: ${(props) => props.theme.lightBlue};
+  }
+`
 function NewItem({ active, setActive }) {
-  const [date, setDate] = useState('')
-  const [description, setDescription] = useState('')
-  const [income, setIncome] = useState('')
+  const [date, setDate] = useState(null)
+  const [dates, setDates] = useState(null)
+  const [transaction, setTransaction] = useState({
+    description: '',
+    value: ''
+  })
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setTransaction((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
   return (
     <>
       {active && (
@@ -59,14 +81,15 @@ function NewItem({ active, setActive }) {
                 dateAdapter={AdapterDayjs}
               >
                 <DatePicker
-                  label='Basic example'
                   value={date}
-                  onChange={(newValue) => {
-                    setDate(newValue)
+                  inputFormat='D/M/YYYY'
+                  onChange={(newDate) => {
+                    setDate(newDate)
                   }}
                   renderInput={({ inputRef, inputProps, InputProps }) => (
                     <Box
-                      sx={{ display: 'flex', alignItems: 'center', gap: '0' }}
+                      onChange={() => setDates(inputProps)}
+                      sx={{ display: 'flex', alignItems: 'center' }}
                     >
                       <Input ref={inputRef} {...inputProps} />
                       {InputProps?.endAdornment}
@@ -75,17 +98,20 @@ function NewItem({ active, setActive }) {
                 />
               </LocalizationProvider>
               <Input
+                name='description'
                 type='text'
                 placeholder='Ingresa una descripcion'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={transaction.description}
+                onChange={handleInputChange}
               />
               <Input
+                name='value'
                 type='text'
                 placeholder='Ingresa el valor'
-                value={income}
-                onChange={(e) => setIncome(e.target.value)}
+                value={transaction.value}
+                onChange={handleInputChange}
               />
+              <SubmitBtn>Añadir</SubmitBtn>
             </FormC>
           </ModalC>
         </Container>
