@@ -25,10 +25,9 @@ const Menu = styled.aside`
   background-color: ${(props) => props.theme.white};
   border-radius: 12px;
   padding: 1.5rem 1rem;
+  box-shadow: ${(props) => props.theme.white} 0px 0px 0px 3px;
   img {
     width: 15rem;
-    filter: invert(22%) sepia(59%) saturate(4758%) hue-rotate(213deg)
-      brightness(105%) contrast(103%);
   }
 `
 

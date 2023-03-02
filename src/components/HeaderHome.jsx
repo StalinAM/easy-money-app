@@ -11,8 +11,6 @@ const Navbar = styled.nav`
 `
 const Logo = styled.img`
   width: 13rem;
-  filter: invert(91%) sepia(13%) saturate(263%) hue-rotate(181deg)
-    brightness(96%) contrast(101%);
 `
 const List = styled.ul`
   display: flex;
