@@ -1,9 +1,11 @@
+import { async } from '@firebase/util'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile
 } from 'firebase/auth'
-import { auth } from './firebase'
+import { addDoc, collection } from 'firebase/firestore'
+import { auth, db } from './firebase'
 
 export const registerUser = async (name, email, password, navigate) => {
   try {
@@ -27,10 +29,18 @@ export const loginUser = async (email, password, navigate) => {
     navigate('/dashboard')
   } catch (error) {}
 }
+
 export const logoutUser = async () => {
   try {
     await auth.signOut()
   } catch (error) {
     console.log(error)
   }
+}
+export const insertNewItem = async (newTransaction) => {
+  try {
+    const transactionsRef = collection(db, 'transactions')
+    const res = await addDoc(transactionsRef, newTransaction)
+    return res
+  } catch (e) {}
 }
