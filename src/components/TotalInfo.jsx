@@ -5,8 +5,9 @@ const Container = styled.article`
   width: 100%;
   background-color: ${(props) => props.theme.white};
   border-radius: 12px;
-  padding: 2.5rem 1.5rem;
+  padding: 3rem 1.5rem;
   text-align: right;
+  box-shadow: #00000021 0px 1px 9px 0px;
   h2 {
     font-size: 2.4rem;
     font-weight: bold;
@@ -16,14 +17,14 @@ const Container = styled.article`
 const Icon = styled.i`
   position: absolute;
   color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme.blue};
-  border: 2px solid ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.darkLightBlue};
   padding: 0.938rem 1.563rem;
   font-size: 2.5rem;
   border-radius: 12px;
   top: 0;
   left: 1.5rem;
   transform: translateY(-50%);
+  box-shadow: #00000021 0px 1px 9px 0px;
 `
 function TotalInfo({ icon, color, title, value }) {
   return (
