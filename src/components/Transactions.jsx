@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { Box } from '@mui/material'
 import 'dayjs/locale/es'
+import { insertNewTransaction } from '../firebase/services'
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -54,9 +55,9 @@ const SubmitBtn = styled.button`
     background-color: ${(props) => props.theme.lightBlue};
   }
 `
-function NewItem({ active, setActive }) {
+function Transactions({ active, setActive }) {
+  const [dateInput, setDateInput] = useState(null)
   const [date, setDate] = useState(null)
-  const [dates, setDates] = useState(null)
   const [transaction, setTransaction] = useState({
     description: '',
     value: ''
@@ -68,29 +69,42 @@ function NewItem({ active, setActive }) {
       [name]: value
     }))
   }
-
+  const addTransaction = async () => {
+    console.log(date)
+    if (date && transaction.description && transaction.value) {
+      const newTransaction = {
+        date,
+        ...transaction
+      }
+      await insertNewTransaction({ ...newTransaction })
+    }
+  }
+  const insertTransaction = async (e) => {
+    e.preventDefault()
+    addTransaction()
+    setActive(!active)
+  }
   return (
     <>
       {active && (
         <Container>
           <ModalC>
             <i onClick={() => setActive(!active)} className='uil uil-times' />
-            <FormC action=''>
+            <FormC onSubmit={insertTransaction}>
               <LocalizationProvider
                 adapterLocale={'es'}
                 dateAdapter={AdapterDayjs}
               >
                 <DatePicker
-                  value={date}
+                  value={dateInput}
                   inputFormat='D/M/YYYY'
                   onChange={(newDate) => {
-                    setDate(newDate)
+                    setDateInput(newDate)
+                    setDate(newDate.$d.toLocaleString().slice(0, -9))
                   }}
+                  disableMaskedInput={true}
                   renderInput={({ inputRef, inputProps, InputProps }) => (
-                    <Box
-                      onChange={() => setDates(inputProps)}
-                      sx={{ display: 'flex', alignItems: 'center' }}
-                    >
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Input ref={inputRef} {...inputProps} />
                       {InputProps?.endAdornment}
                     </Box>
@@ -111,7 +125,7 @@ function NewItem({ active, setActive }) {
                 value={transaction.value}
                 onChange={handleInputChange}
               />
-              <SubmitBtn>Añadir</SubmitBtn>
+              <SubmitBtn type='submit'>Añadir</SubmitBtn>
             </FormC>
           </ModalC>
         </Container>
@@ -120,4 +134,4 @@ function NewItem({ active, setActive }) {
   )
 }
 
-export default NewItem
+export default Transactions
