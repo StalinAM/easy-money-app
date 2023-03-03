@@ -37,10 +37,11 @@ export const logoutUser = async () => {
     console.log(error)
   }
 }
-export const insertNewItem = async (newTransaction) => {
+export const insertNewTransaction = async (transaction) => {
   try {
     const transactionsRef = collection(db, 'transactions')
-    const res = await addDoc(transactionsRef, newTransaction)
-    return res
-  } catch (e) {}
+    await addDoc(transactionsRef, transaction)
+  } catch (e) {
+    console.log(e)
+  }
 }
