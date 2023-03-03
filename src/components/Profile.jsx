@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
-import NewItem from './NewItem'
+import Transactions from './Transactions'
 
 const ImgProfile = styled.div`
   width: 64px;
@@ -42,7 +42,7 @@ function Profile() {
   return (
     <Navbar>
       <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
-      <NewItem active={active} setActive={setActive} />
+      <Transactions active={active} setActive={setActive} />
       <div>
         <h2>{currentUser.displayName}</h2>
         <ImgProfile />
