@@ -4,6 +4,54 @@ import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Input } from '../style/StyleComponents'
 
+function SignIn() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const signIn = async (e) => {
+    e.preventDefault()
+    loginUser(email, password, navigate)
+  }
+  return (
+    <Container>
+      <Content>
+        <Header>
+          <h1>Iniciar sesión</h1>
+          <SigninRS>
+            <i className='uil uil-facebook-f'></i>
+            <i className='uil uil-github-alt'></i>
+            <i className='uil uil-microsoft'></i>
+          </SigninRS>
+        </Header>
+        <FormC onSubmit={signIn}>
+          <BoxData>
+            <Input
+              type='email'
+              placeholder='Ingresa un correo'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type='password'
+              placeholder='Ingresa una contraseña'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </BoxData>
+          <SubmitBtn type='submit'>Iniciar sesión</SubmitBtn>
+          <SignUp>
+            ¿No tienes una cuenta?<Link to='/signup'>Registrarse</Link>
+          </SignUp>
+        </FormC>
+      </Content>
+    </Container>
+  )
+}
+
+export default SignIn
+
 const Container = styled.main`
   display: flex;
   justify-content: center;
@@ -92,50 +140,3 @@ const SigninRS = styled.div`
     }
   }
 `
-function SignIn() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const navigate = useNavigate()
-
-  const signIn = async (e) => {
-    e.preventDefault()
-    loginUser(email, password, navigate)
-  }
-  return (
-    <Container>
-      <Content>
-        <Header>
-          <h1>Iniciar sesión</h1>
-          <SigninRS>
-            <i className='uil uil-facebook-f'></i>
-            <i className='uil uil-github-alt'></i>
-            <i className='uil uil-microsoft'></i>
-          </SigninRS>
-        </Header>
-        <FormC onSubmit={signIn}>
-          <BoxData>
-            <Input
-              type='email'
-              placeholder='Ingresa un correo'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type='password'
-              placeholder='Ingresa una contraseña'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </BoxData>
-          <SubmitBtn type='submit'>Iniciar sesión</SubmitBtn>
-          <SignUp>
-            ¿No tienes una cuenta?<Link to='/signup'>Registrarse</Link>
-          </SignUp>
-        </FormC>
-      </Content>
-    </Container>
-  )
-}
-
-export default SignIn

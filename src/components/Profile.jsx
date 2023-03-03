@@ -3,6 +3,23 @@ import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
 import Transactions from './Transactions'
 
+function Profile() {
+  const { currentUser } = useContext(AuthContext)
+  const [active, setActive] = useState(false)
+  return (
+    <Navbar>
+      <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
+      <Transactions active={active} setActive={setActive} />
+      <div>
+        <h2>{currentUser.displayName}</h2>
+        <ImgProfile />
+      </div>
+    </Navbar>
+  )
+}
+
+export default Profile
+
 const ImgProfile = styled.div`
   width: 64px;
   height: 64px;
@@ -32,23 +49,8 @@ const BtnModal = styled.button`
   font-size: ${(props) => props.theme.mFont};
   background-color: ${(props) => props.theme.lightBlue};
   color: ${(props) => props.theme.white};
+  box-shadow: #00000021 0px 1px 9px 0px;
   &:hover {
     border: 1px solid ${(props) => props.theme.white};
   }
 `
-function Profile() {
-  const { currentUser } = useContext(AuthContext)
-  const [active, setActive] = useState(false)
-  return (
-    <Navbar>
-      <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
-      <Transactions active={active} setActive={setActive} />
-      <div>
-        <h2>{currentUser.displayName}</h2>
-        <ImgProfile />
-      </div>
-    </Navbar>
-  )
-}
-
-export default Profile
