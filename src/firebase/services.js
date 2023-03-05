@@ -1,10 +1,9 @@
-import { async } from '@firebase/util'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile
 } from 'firebase/auth'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { auth, db } from './firebase'
 
 export const registerUser = async (name, email, password, navigate) => {
@@ -44,4 +43,18 @@ export const insertNewTransaction = async (transaction) => {
   } catch (e) {
     console.log(e)
   }
+}
+export async function fetchTransactions(uid) {
+  const transactions = []
+  const q = query(collection(db, 'transactions'), where('uid', '==', uid))
+
+  const querySnapshot = await getDocs(q)
+
+  querySnapshot.forEach((doc) => {
+    const transaction = { ...doc.data() }
+    transaction.docId = doc.id
+
+    transactions.push(transaction)
+  })
+  return transactions
 }
