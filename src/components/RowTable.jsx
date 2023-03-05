@@ -1,12 +1,12 @@
 import React from 'react'
 
-function RowTable({ fecha, description, ingreso = '', egreso = '' }) {
+function RowTable({ date, description, income, expense }) {
   return (
     <>
-      <td>{fecha}</td>
+      <td>{date}</td>
       <td>{description}</td>
-      <td>{ingreso}</td>
-      <td>{egreso}</td>
+      <td>{income != 0 ? `$${income}` : ''}</td>
+      <td>{expense != 0 ? `$${expense}` : ''}</td>
     </>
   )
 }
