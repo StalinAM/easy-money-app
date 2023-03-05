@@ -15,7 +15,8 @@ function Transactions({ active, setActive }) {
   const [date, setDate] = useState(null)
   const [transaction, setTransaction] = useState({
     description: '',
-    value: ''
+    expense: 0,
+    income: 0
   })
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -25,8 +26,11 @@ function Transactions({ active, setActive }) {
     }))
   }
   const addTransaction = async () => {
-    console.log(date)
-    if (date && transaction.description && transaction.value) {
+    if (
+      date &&
+      transaction.description &&
+      (transaction.expense || transaction.income)
+    ) {
       const newTransaction = {
         uid: currentUser.uid,
         date,
@@ -39,6 +43,7 @@ function Transactions({ active, setActive }) {
     e.preventDefault()
     addTransaction()
     setActive(!active)
+    setTransaction({ description: '', expense: '', income: '' })
   }
   return (
     <>
@@ -53,10 +58,10 @@ function Transactions({ active, setActive }) {
               >
                 <DatePicker
                   value={dateInput}
-                  inputFormat='D/M/YYYY'
+                  inputFormat='DD/MM/YYYY'
                   onChange={(newDate) => {
                     setDateInput(newDate)
-                    setDate(newDate.$d.toLocaleString().slice(0, -9))
+                    setDate(newDate.$d.toLocaleString('es-CL').slice(0, -10))
                   }}
                   disableMaskedInput={true}
                   renderInput={({ inputRef, inputProps, InputProps }) => (
@@ -75,10 +80,17 @@ function Transactions({ active, setActive }) {
                 onChange={handleInputChange}
               />
               <Input
-                name='value'
-                type='text'
-                placeholder='Ingresa el valor'
-                value={transaction.value}
+                name='expense'
+                type='number'
+                placeholder='Ingresa el valor del gasto'
+                value={transaction.expense}
+                onChange={handleInputChange}
+              />
+              <Input
+                name='income'
+                type='number'
+                placeholder='Ingresa el valor del ingreso'
+                value={transaction.income}
                 onChange={handleInputChange}
               />
               <SubmitBtn type='submit'>Añadir</SubmitBtn>
