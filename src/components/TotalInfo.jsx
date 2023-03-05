@@ -1,11 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+
+function TotalInfo({ icon, title, value }) {
+  return (
+    <Container>
+      <Icon className={`uil uil-money-${icon}`} />
+      <p>{title}</p>
+      <h2>${value}</h2>
+    </Container>
+  )
+}
+
+export default TotalInfo
+
 const Container = styled.article`
   position: relative;
   width: 100%;
   background-color: ${(props) => props.theme.white};
   border-radius: 12px;
-  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem 1rem;
   text-align: right;
   box-shadow: #00000021 0px 1px 9px 0px;
   h2 {
@@ -26,14 +39,3 @@ const Icon = styled.i`
   transform: translateY(-50%);
   box-shadow: #00000021 0px 1px 9px 0px;
 `
-function TotalInfo({ icon, color, title, value }) {
-  return (
-    <Container>
-      <Icon className={`uil uil-money-${icon}`} />
-      <p>{title}</p>
-      <h2>${value}</h2>
-    </Container>
-  )
-}
-
-export default TotalInfo
