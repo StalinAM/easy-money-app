@@ -1,14 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { TransactionContext } from '../context/TransactionsContext'
 import { deleteTransaction } from '../firebase/services'
+import FormTransaction from './FormTransaction'
+import Transactions from './Transactions'
 
 function RowTable({ date, description, income, expense, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
+  const [active, setActive] = useState(false)
+
   const removeTransaction = async () => {
     await deleteTransaction(docId)
     returnTransactions()
   }
+
   return (
     <>
       <td>{date}</td>
@@ -16,7 +21,7 @@ function RowTable({ date, description, income, expense, docId }) {
       <td>{income != 0 ? `$${income}` : ''}</td>
       <td>{expense != 0 ? `$${expense}` : ''}</td>
       <td>
-        <Icon>
+        <Icon onClick={() => setActive(!active)}>
           <i className='uil uil-pen' />
         </Icon>
         <Icon onClick={removeTransaction}>
