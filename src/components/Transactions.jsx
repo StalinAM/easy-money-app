@@ -8,9 +8,11 @@ import { Box } from '@mui/material'
 import 'dayjs/locale/es'
 import { insertNewTransaction } from '../firebase/services'
 import { AuthContext } from '../context/Auth'
+import { TransactionContext } from '../context/TransactionsContext'
 
 function Transactions({ active, setActive }) {
   const { currentUser } = useContext(AuthContext)
+  const { returnTransactions } = useContext(TransactionContext)
   const [dateInput, setDateInput] = useState(null)
   const [date, setDate] = useState(null)
   const [transaction, setTransaction] = useState({
@@ -38,6 +40,7 @@ function Transactions({ active, setActive }) {
       }
       await insertNewTransaction({ ...newTransaction })
     }
+    returnTransactions()
   }
   const insertTransaction = async (e) => {
     e.preventDefault()
