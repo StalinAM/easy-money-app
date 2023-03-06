@@ -3,7 +3,16 @@ import {
   signInWithEmailAndPassword,
   updateProfile
 } from 'firebase/auth'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where
+} from 'firebase/firestore'
 import { auth, db } from './firebase'
 
 export const registerUser = async (name, email, password, navigate) => {
@@ -44,7 +53,7 @@ export const insertNewTransaction = async (transaction) => {
     console.log(e)
   }
 }
-export async function fetchTransactions(uid) {
+export const fetchTransactions = async (uid) => {
   const transactions = []
   const q = query(collection(db, 'transactions'), where('uid', '==', uid))
 
@@ -57,4 +66,11 @@ export async function fetchTransactions(uid) {
     transactions.push(transaction)
   })
   return transactions
+}
+
+export const deleteTransaction = async (docId) => {
+  await deleteDoc(doc(db, 'transactions', docId))
+}
+export const updateTransaction = async (docId, transaction) => {
+  const res = await setDoc(doc(db, 'transactions', docId), transaction)
 }
