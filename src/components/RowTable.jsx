@@ -4,7 +4,6 @@ import { AuthContext } from '../context/Auth'
 import { TransactionContext } from '../context/TransactionsContext'
 import { deleteTransaction, updateTransaction } from '../firebase/services'
 import FormTransaction from './FormTransaction'
-import Transactions from './Transactions'
 
 function RowTable({ date, description, income, expense, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
