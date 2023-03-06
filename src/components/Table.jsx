@@ -1,19 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
-import { AuthContext } from '../context/Auth'
-import { fetchTransactions } from '../firebase/services'
+import { TransactionContext } from '../context/TransactionsContext'
 import RowTable from './RowTable'
 
 function Table() {
-  const { currentUser } = useContext(AuthContext)
-  const [transactions, setTransactions] = useState([])
-  useEffect(() => {
-    returnTransactions()
-  }, [])
-  const returnTransactions = async () => {
-    const asyncTransactions = await fetchTransactions(currentUser.uid)
-    setTransactions([...asyncTransactions])
-  }
+  const { arrayTransactions } = useContext(TransactionContext)
 
   return (
     <ContainerTable>
@@ -25,10 +16,11 @@ function Table() {
             <th>Descripción</th>
             <th>Ingreso</th>
             <th>Egreso</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
-          {transactions
+          {arrayTransactions
             .sort((a, b) => {
               const dateA = new Date(a.date.split('-').reverse().join('/'))
               const dateB = new Date(b.date.split('-').reverse().join('/'))
@@ -41,6 +33,7 @@ function Table() {
                   description={item.description}
                   income={item.income}
                   expense={item.expense}
+                  docId={item.docId}
                 />
               </tr>
             ))}
@@ -59,6 +52,18 @@ const ContainerTable = styled.div`
   grid-column: 2;
   grid-row: 3/5;
   box-shadow: #00000021 0px 1px 9px 0px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 5px; /* width of the entire scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: none; /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) =>
+      props.theme.xLightBlue}; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
 `
 const TitleTable = styled.header`
   color: ${(props) => props.theme.darkBlue};
@@ -77,8 +82,10 @@ const BodyTable = styled.table`
   tr {
     display: grid;
     justify-items: start;
-    grid-template-columns: 1fr 60% 1fr 1fr;
+    grid-template-columns: 1fr 50% 1fr 1fr 1fr;
     border-bottom: 2px solid ${(props) => props.theme.xLightBlue};
+    align-items: center;
+    text-transform: capitalize;
     td {
       padding: 0.5rem 0.25rem;
     }
