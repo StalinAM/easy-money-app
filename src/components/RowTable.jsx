@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import { AuthContext } from '../context/Auth'
 import { TransactionContext } from '../context/TransactionsContext'
-import { deleteTransaction } from '../firebase/services'
+import { deleteTransaction, updateTransaction } from '../firebase/services'
 import FormTransaction from './FormTransaction'
 import Transactions from './Transactions'
 
@@ -9,6 +10,33 @@ function RowTable({ date, description, income, expense, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
   const [active, setActive] = useState(false)
 
+  const { currentUser } = useContext(AuthContext)
+  const [dateForm, setDateForm] = useState(null)
+  const [transaction, setTransaction] = useState({
+    description: '',
+    expense: 0,
+    income: 0
+  })
+  const editTransaction = async () => {
+    if (
+      dateForm &&
+      transaction.description &&
+      (transaction.expense || transaction.income)
+    ) {
+      const newTransaction = {
+        uid: currentUser.uid,
+        date: dateForm,
+        ...transaction
+      }
+      await updateTransaction(docId, { ...newTransaction })
+    }
+    returnTransactions()
+  }
+  const updateTransactionSubmit = async (e) => {
+    e.preventDefault()
+    editTransaction()
+    setActive(!active)
+  }
   const removeTransaction = async () => {
     await deleteTransaction(docId)
     returnTransactions()
@@ -28,6 +56,16 @@ function RowTable({ date, description, income, expense, docId }) {
           <i className='uil uil-trash-alt' />
         </Icon>
       </td>
+      {active && (
+        <FormTransaction
+          handleSubmit={updateTransactionSubmit}
+          active={active}
+          setActive={setActive}
+          transaction={transaction}
+          setTransaction={setTransaction}
+          setDate={setDateForm}
+        />
+      )}
     </>
   )
 }
