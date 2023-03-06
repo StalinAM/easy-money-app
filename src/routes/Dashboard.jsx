@@ -17,10 +17,10 @@ function Dashboard() {
         <div>
           <img src={logo} alt='logo of easymoney' />
           <br />
-          <ul>
+          <MenuRoutes>
             <li>General</li>
             <li>Tablas</li>
-          </ul>
+          </MenuRoutes>
         </div>
         <Button
           handleClick={handleClick}
@@ -72,4 +72,10 @@ const ContainerTotal = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+`
+
+const MenuRoutes = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
