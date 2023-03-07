@@ -7,7 +7,6 @@ import FormTransaction from './FormTransaction'
 function Transactions({ active, setActive }) {
   const { currentUser } = useContext(AuthContext)
   const { returnTransactions } = useContext(TransactionContext)
-  const [date, setDate] = useState(null)
   const [transaction, setTransaction] = useState({
     description: '',
     expense: 0,
@@ -16,13 +15,12 @@ function Transactions({ active, setActive }) {
 
   const addTransaction = async () => {
     if (
-      date &&
       transaction.description &&
       (transaction.expense || transaction.income)
     ) {
       const newTransaction = {
         uid: currentUser.uid,
-        date,
+        date: new Date().toISOString(),
         ...transaction
       }
       await insertNewTransaction({ ...newTransaction })
@@ -44,7 +42,6 @@ function Transactions({ active, setActive }) {
           setActive={setActive}
           transaction={transaction}
           setTransaction={setTransaction}
-          setDate={setDate}
         />
       )}
     </>
