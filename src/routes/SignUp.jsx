@@ -3,6 +3,57 @@ import { registerUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
+function SignUp() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const signUp = async (e) => {
+    e.preventDefault()
+    registerUser(name, email, password, navigate)
+  }
+
+  return (
+    <Container>
+      <Content>
+        <Header>
+          <h1>Crear una cuenta</h1>
+        </Header>
+        <FormC onSubmit={signUp}>
+          <BoxData>
+            <Input
+              type='text'
+              placeholder='Ingrese tu nombre'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              type='email'
+              placeholder='Ingrese un correo'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type='password'
+              placeholder='Ingrese una contraseña'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </BoxData>
+          <SubmitBtn type='submit'>Registrarse</SubmitBtn>
+          <Login>
+            ¿Ya tienes una cuenta?<Link to='/signin'>Iniciar sesión</Link>
+          </Login>
+        </FormC>
+      </Content>
+    </Container>
+  )
+}
+
+export default SignUp
+
 const Container = styled.main`
   display: flex;
   justify-content: center;
@@ -85,53 +136,3 @@ const Login = styled.p`
     }
   }
 `
-function SignUp() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const navigate = useNavigate()
-
-  const signUp = async (e) => {
-    e.preventDefault()
-    registerUser(name, email, password, navigate)
-  }
-
-  return (
-    <Container>
-      <Content>
-        <Header>
-          <h1>Crear una cuenta</h1>
-        </Header>
-        <FormC onSubmit={signUp}>
-          <BoxData>
-            <Input
-              type='text'
-              placeholder='Ingrese tu nombre'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              type='email'
-              placeholder='Ingrese un correo'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type='password'
-              placeholder='Ingrese una contraseña'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </BoxData>
-          <SubmitBtn type='submit'>Registrarse</SubmitBtn>
-          <Login>
-            ¿Ya tienes una cuenta?<Link to='/signin'>Iniciar sesión</Link>
-          </Login>
-        </FormC>
-      </Content>
-    </Container>
-  )
-}
-
-export default SignUp
