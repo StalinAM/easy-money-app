@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import SignIn from './routes/SignIn'
 import SignUp from './routes/SignUp'
 import { AuthContext } from './context/Auth'
+import Tables from './routes/Tables'
 
 function App() {
   const { currentUser } = useContext(AuthContext)
@@ -52,6 +53,14 @@ function App() {
             element={
               <ProtectDashboard>
                 <Dashboard />
+              </ProtectDashboard>
+            }
+          />
+          <Route
+            path='tables'
+            element={
+              <ProtectDashboard>
+                <Tables />
               </ProtectDashboard>
             }
           />
