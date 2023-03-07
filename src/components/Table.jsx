@@ -5,7 +5,6 @@ import RowTable from './RowTable'
 
 function Table() {
   const { arrayTransactions } = useContext(TransactionContext)
-
   return (
     <ContainerTable>
       <TitleTable>Ultimas transacciones</TitleTable>
@@ -22,8 +21,8 @@ function Table() {
         <tbody>
           {arrayTransactions
             .sort((a, b) => {
-              const dateA = new Date(a.date.split('-').reverse().join('/'))
-              const dateB = new Date(b.date.split('-').reverse().join('/'))
+              const dateA = new Date(a.date)
+              const dateB = new Date(b.date)
               return dateB - dateA
             })
             .map((item) => (
