@@ -10,23 +10,22 @@ function RowTable({ date, description, income, expense, docId }) {
   const [active, setActive] = useState(false)
 
   const { currentUser } = useContext(AuthContext)
-  const [dateForm, setDateForm] = useState(null)
   const [transaction, setTransaction] = useState({
-    description: '',
-    expense: 0,
-    income: 0
+    description,
+    expense,
+    income
   })
   const editTransaction = async () => {
     if (
-      dateForm &&
       transaction.description &&
       (transaction.expense || transaction.income)
     ) {
       const newTransaction = {
         uid: currentUser.uid,
-        date: dateForm,
+        date: new Date().toISOString(),
         ...transaction
       }
+      console.log(newTransaction.date)
       await updateTransaction(docId, { ...newTransaction })
     }
     returnTransactions()
@@ -43,7 +42,7 @@ function RowTable({ date, description, income, expense, docId }) {
 
   return (
     <>
-      <td>{date}</td>
+      <td>{date.slice(0, 10).split('-').reverse().join('-')}</td>
       <td>{description}</td>
       <td>{income != 0 ? `$${income}` : ''}</td>
       <td>{expense != 0 ? `$${expense}` : ''}</td>
@@ -62,7 +61,6 @@ function RowTable({ date, description, income, expense, docId }) {
           setActive={setActive}
           transaction={transaction}
           setTransaction={setTransaction}
-          setDate={setDateForm}
         />
       )}
     </>
