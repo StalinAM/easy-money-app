@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { TransactionContext } from '../context/TransactionsContext'
 import RowTable from './RowTable'
 
-function Table() {
+function Table({ row, title }) {
   const { arrayTransactions } = useContext(TransactionContext)
   return (
-    <ContainerTable>
-      <TitleTable>Ultimas transacciones</TitleTable>
+    <ContainerTable row={row}>
+      <TitleTable>{title}</TitleTable>
       <BodyTable>
         <thead>
           <tr>
@@ -49,7 +49,7 @@ const ContainerTable = styled.div`
   border-radius: 12px;
   padding: 1.5rem;
   grid-column: 2;
-  grid-row: 3/5;
+  grid-row: ${(props) => props.row};
   box-shadow: #00000021 0px 1px 9px 0px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
