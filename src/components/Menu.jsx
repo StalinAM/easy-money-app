@@ -1,25 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
-function Menu() {
+function Menu({ row }) {
+  const [active, setActive] = useState(0)
+  const location = useLocation()
   const handleClick = () => {
     logoutUser()
   }
+  const menuItems = [
+    {
+      title: 'Resumen',
+      link: '/dashboard'
+    },
+    {
+      title: 'Tablas',
+      link: '/tables'
+    }
+  ]
+  useEffect(() => {
+    const path = location.pathname
+    const index = menuItems.findIndex((item) => item.link === path)
+    setActive(index)
+  }, [location.pathname])
+  const handleItemClick = (index) => {
+    setActive(index)
+  }
   return (
-    <Container>
+    <Container row={row}>
       <div>
         <img src={logo} alt='logo of easymoney' />
         <br />
         <MenuRoutes>
-          <li>
-            <Link to='/dashboard'>General</Link>
-          </li>
-          <li>
-            <Link to='/tables'>Tables</Link>
-          </li>
+          {menuItems.map((item, index) => (
+            <LinlStyle key={index} to={item.link}>
+              <Item active={active === index} onClick={handleItemClick}>
+                {item.title}
+              </Item>
+            </LinlStyle>
+          ))}
         </MenuRoutes>
       </div>
       <Button handleClick={handleClick} text='Cerrar sessión' link='/signin' />
@@ -33,7 +54,7 @@ const Container = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  grid-row: 1/5;
+  grid-row: ${(props) => props.row};
   align-items: center;
   background-color: ${(props) => props.theme.darkLightBlue};
   border-radius: 12px;
@@ -44,7 +65,26 @@ const Container = styled.aside`
   }
 `
 const MenuRoutes = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+`
+const Item = styled.li`
+  width: 100%;
+  font-size: ${(props) => props.theme.mFont};
+  padding: 0.75rem 1rem;
+  color: ${(props) => props.theme.white};
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: ${(props) => (props.active ? '#0033bb' : 'none')};
+  /* border: 2px solid white; */
+  &:hover {
+    background-color: ${(props) => props.theme.lightBlue};
+  }
+`
+const LinlStyle = styled(Link)`
+  display: block;
+  width: 100%;
 `
