@@ -21,33 +21,39 @@ function FormTransaction({
       <ModalC>
         <i onClick={() => setActive(!active)} className='uil uil-times' />
         <FormC onSubmit={handleSubmit}>
-          <Input
-            name='description'
-            type='text'
-            placeholder='Ingresa una descripcion'
-            value={transaction.description}
-            onChange={handleInputChange}
-          />
+          <h2>Nueva transacción</h2>
           <div>
-            <label for='income'>Valor del Ingreso</label>
+            <label htmlFor='description'>Descripcion</label>
             <Input
-              name='income'
-              type='number'
-              placeholder='Ingresa el valor del ingreso'
-              value={transaction.income}
+              name='description'
+              type='text'
+              placeholder='Luz, Agua, etc'
+              value={transaction.description}
               onChange={handleInputChange}
             />
           </div>
-          <div>
-            <label for='expense'>Valor del Gasto</label>
-            <Input
-              name='expense'
-              type='number'
-              placeholder='Ingresa el valor del gasto'
-              value={transaction.expense}
-              onChange={handleInputChange}
-            />
-          </div>
+          <ContainerValues>
+            <div>
+              <label htmlFor='income'>Ingreso</label>
+              <Input
+                name='income'
+                type='number'
+                placeholder='0'
+                value={transaction.income}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <label htmlFor='expense'>Gasto</label>
+              <Input
+                name='expense'
+                type='number'
+                placeholder='0'
+                value={transaction.expense}
+                onChange={handleInputChange}
+              />
+            </div>
+          </ContainerValues>
           <SubmitBtn type='submit'>Añadir</SubmitBtn>
         </FormC>
       </ModalC>
@@ -73,14 +79,14 @@ const ModalC = styled.div`
   background-color: ${(props) => props.theme.white};
   position: relative;
   border-radius: 30px;
-  width: 425px;
-  padding: 2rem;
+  width: 500px;
+  padding: 2rem 0;
   align-items: center;
   justify-content: center;
   i {
     position: absolute;
-    top: 1rem;
-    right: 2rem;
+    top: 0;
+    right: 1rem;
     color: ${(props) => props.theme.blue};
     font-size: 3rem;
     cursor: pointer;
@@ -89,6 +95,7 @@ const ModalC = styled.div`
 const FormC = styled.form`
   display: flex;
   flex-direction: column;
+  min-width: 0;
   max-width: 300px;
   gap: 1.125rem;
   margin: 0 auto;
@@ -105,10 +112,8 @@ const SubmitBtn = styled.button`
   }
 `
 const ContainerValues = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 `
