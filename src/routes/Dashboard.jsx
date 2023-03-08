@@ -8,7 +8,7 @@ import Menu from '../components/Menu'
 function Dashboard() {
   return (
     <Container>
-      <Menu />
+      <Menu row='1/5' />
       <Profile />
       <ContainerTotal>
         <TotalInfo icon='stack' title='Valor total' value='130' />
@@ -16,7 +16,7 @@ function Dashboard() {
         <TotalInfo icon='insert' title='Egreso' value='200' />
         <TotalInfo icon='bill' title='Mes pasado' value='40' />
       </ContainerTotal>
-      <Table />
+      <Table title='Ultimas transacciones' row='3/5' />
     </Container>
   )
 }
