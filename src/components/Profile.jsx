@@ -1,15 +1,12 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
-import Transactions from './Transactions'
 
 function Profile() {
   const { currentUser } = useContext(AuthContext)
-  const [active, setActive] = useState(false)
+
   return (
     <Navbar>
-      <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
-      <Transactions active={active} setActive={setActive} />
       <div>
         <h2>{currentUser.displayName}</h2>
         <ImgProfile />
@@ -30,7 +27,7 @@ const ImgProfile = styled.div`
 const Navbar = styled.nav`
   display: flex;
   grid-column: 2;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
   div {
@@ -41,16 +38,5 @@ const Navbar = styled.nav`
     text-transform: capitalize;
     color: ${(props) => props.theme.white};
     margin-right: 1rem;
-  }
-`
-const BtnModal = styled.button`
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  font-size: ${(props) => props.theme.mFont};
-  background-color: ${(props) => props.theme.lightBlue};
-  color: ${(props) => props.theme.white};
-  box-shadow: #00000021 0px 1px 9px 0px;
-  &:hover {
-    border: 1px solid ${(props) => props.theme.white};
   }
 `
