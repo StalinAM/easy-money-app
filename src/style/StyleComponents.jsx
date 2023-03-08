@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
+  width: 100%;
   border: 2px solid ${(props) => props.theme.xLightBlue};
   padding: 0.75rem 1rem;
   border-radius: 12px;
