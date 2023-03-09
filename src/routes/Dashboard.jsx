@@ -1,17 +1,30 @@
-import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Profile from '../components/Profile'
 import Table from '../components/Table'
 import Menu from '../components/Menu'
 import MounthValues from '../components/MounthValues'
 
-function Dashboard() {
+function Dashboard({ arrayTransactions }) {
+  const currentMonth = new Date().getMonth() + 1
+  const currentYear = new Date().getFullYear()
+
+  const filteredTransactions = arrayTransactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date)
+    return (
+      transactionDate.getMonth() + 1 === currentMonth &&
+      transactionDate.getFullYear() === currentYear
+    )
+  })
   return (
     <Container>
       <Menu row='1/5' />
       <Profile />
       <MounthValues />
-      <Table title='Ultimas transacciones' row='3/5' />
+      <Table
+        arrayTransactions={filteredTransactions}
+        title='Ultimas transacciones'
+        row='3/5'
+      />
     </Container>
   )
 }
