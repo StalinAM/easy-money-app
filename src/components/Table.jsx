@@ -1,10 +1,7 @@
-import { useContext } from 'react'
 import styled from 'styled-components'
-import { TransactionContext } from '../context/TransactionsContext'
 import RowTable from './RowTable'
 
-function Table({ row, title }) {
-  const { arrayTransactions } = useContext(TransactionContext)
+function Table({ row, title, arrayTransactions }) {
   return (
     <ContainerTable row={row}>
       <TitleTable>{title}</TitleTable>
@@ -19,23 +16,17 @@ function Table({ row, title }) {
           </tr>
         </thead>
         <tbody>
-          {arrayTransactions
-            .sort((a, b) => {
-              const dateA = new Date(a.date)
-              const dateB = new Date(b.date)
-              return dateB - dateA
-            })
-            .map((item) => (
-              <tr key={item.docId}>
-                <RowTable
-                  date={item.date}
-                  description={item.description}
-                  income={item.income}
-                  expense={item.expense}
-                  docId={item.docId}
-                />
-              </tr>
-            ))}
+          {arrayTransactions.map((item) => (
+            <tr key={item.docId}>
+              <RowTable
+                date={item.date}
+                description={item.description}
+                income={item.income}
+                expense={item.expense}
+                docId={item.docId}
+              />
+            </tr>
+          ))}
         </tbody>
       </BodyTable>
     </ContainerTable>
