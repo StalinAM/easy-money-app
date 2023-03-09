@@ -1,21 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import TotalInfo from '../components/TotalInfo'
 import Profile from '../components/Profile'
 import Table from '../components/Table'
 import Menu from '../components/Menu'
+import MounthValues from '../components/MounthValues'
 
 function Dashboard() {
   return (
     <Container>
       <Menu row='1/5' />
       <Profile />
-      <ContainerTotal>
-        <TotalInfo icon='stack' title='Valor total' value='130' />
-        <TotalInfo icon='withdraw' title='Ingreso' value='30' />
-        <TotalInfo icon='insert' title='Egreso' value='200' />
-        <TotalInfo icon='bill' title='Mes pasado' value='40' />
-      </ContainerTotal>
+      <MounthValues />
       <Table title='Ultimas transacciones' row='3/5' />
     </Container>
   )
@@ -32,11 +27,4 @@ const Container = styled.main`
   grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 1fr 1fr 1fr;
   background-color: ${(props) => props.theme.blue};
-`
-
-const ContainerTotal = styled.div`
-  padding-top: 2.9rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
 `
