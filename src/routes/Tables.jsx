@@ -3,17 +3,50 @@ import styled from 'styled-components'
 import Menu from '../components/Menu'
 import Table from '../components/Table'
 import Transactions from '../components/Transactions'
+import { groupTransactionsByMonth } from '../components/groupsFunction'
 
-function Tables() {
+function Tables({ arrayTransactions }) {
   const [active, setActive] = useState(false)
+
+  const groups = groupTransactionsByMonth(arrayTransactions)
+  const months = Object.keys(groups)
+  const [currentMonthIndex, setCurrentMonthIndex] = useState(0)
+
+  function goToPreviousMonth() {
+    setCurrentMonthIndex(Math.max(currentMonthIndex - 1, 0))
+  }
+
+  function goToNextMonth() {
+    setCurrentMonthIndex(Math.min(currentMonthIndex + 1, months.length - 1))
+  }
+
+  const currentMonth = months[currentMonthIndex]
+  const transactionsForCurrentMonth = groups[currentMonth]
   return (
     <Container>
-      <Menu row='1/3' />
+      <Menu row='1/4' />
       <ContainerBtn>
-        <BtnModal onClick={() => setActive(!active)}>Crear nuevo</BtnModal>
+        <BtnModal onClick={() => setActive(!active)}>Nueva transacción</BtnModal>
+        <h2>{currentMonth}</h2>
       </ContainerBtn>
       <Transactions active={active} setActive={setActive} />
-      <Table title='Transacciones' row='2/3' />
+      <Table
+        arrayTransactions={transactionsForCurrentMonth}
+        title='Transacciones'
+        row='2/3'
+      />
+      <Pagination>
+        {currentMonthIndex != months.length - 1 && (
+          <BtnPage onClick={goToNextMonth}>
+            <i className='uil uil-angle-left' />
+          </BtnPage>
+        )}
+        {currentMonthIndex != 0 && (
+          <BtnPage onClick={goToPreviousMonth}>
+            <i className='uil uil-angle-right' />
+          </BtnPage>
+        )}
+      </Pagination>
     </Container>
   )
 }
@@ -27,11 +60,17 @@ const Container = styled.main`
   display: grid;
   gap: 2rem;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 70px 1fr;
+  grid-template-rows: 70px 1fr 40px;
   background-color: ${(props) => props.theme.blue};
 `
-const ContainerBtn = styled.div`
-  padding: 2rem 0;
+const ContainerBtn = styled.header`
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0 0;
+  h2 {
+    text-transform: capitalize;
+    color: ${(props) => props.theme.white};
+  }
 `
 const BtnModal = styled.button`
   padding: 0.5rem 1rem;
@@ -42,5 +81,21 @@ const BtnModal = styled.button`
   box-shadow: #00000021 0px 1px 9px 0px;
   &:hover {
     border: 1px solid ${(props) => props.theme.white};
+  }
+`
+const Pagination = styled.div`
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+`
+const BtnPage = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: ${(props) => props.theme.lightBlue};
+  i {
+    color: ${(props) => props.theme.white};
+    font-size: ${(props) => props.theme.lFont};
   }
 `
