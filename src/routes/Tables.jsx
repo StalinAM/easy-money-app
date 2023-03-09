@@ -26,7 +26,9 @@ function Tables({ arrayTransactions }) {
     <Container>
       <Menu row='1/4' />
       <ContainerBtn>
-        <BtnModal onClick={() => setActive(!active)}>Nueva transacción</BtnModal>
+        <BtnModal onClick={() => setActive(!active)}>
+          Nueva transacción
+        </BtnModal>
         <h2>{currentMonth}</h2>
       </ContainerBtn>
       <Transactions active={active} setActive={setActive} />
