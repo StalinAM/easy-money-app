@@ -11,9 +11,16 @@ import SignIn from './routes/SignIn'
 import SignUp from './routes/SignUp'
 import { AuthContext } from './context/Auth'
 import Tables from './routes/Tables'
+import { TransactionContext } from './context/TransactionsContext'
 
 function App() {
   const { currentUser } = useContext(AuthContext)
+  const { arrayTransactions } = useContext(TransactionContext)
+  const sortArray = arrayTransactions.sort((a, b) => {
+    const dateA = new Date(a.date)
+    const dateB = new Date(b.date)
+    return dateB - dateA
+  })
   const ProtectDashboard = ({ children }) => {
     if (!currentUser) {
       return <Navigate to='/signin' />
@@ -52,7 +59,7 @@ function App() {
             path='dashboard'
             element={
               <ProtectDashboard>
-                <Dashboard />
+                <Dashboard arrayTransactions={sortArray} />
               </ProtectDashboard>
             }
           />
@@ -60,7 +67,7 @@ function App() {
             path='tables'
             element={
               <ProtectDashboard>
-                <Tables />
+                <Tables arrayTransactions={sortArray} />
               </ProtectDashboard>
             }
           />
