@@ -29,10 +29,24 @@ function MounthValues() {
   const total = incomes - expenses
   return (
     <ContainerTotal>
-      <TotalInfo icon='stack' title='Valor total' value={total} />
-      <TotalInfo icon='withdraw' title='Ingreso' value={incomes} />
-      <TotalInfo icon='insert' title='Egreso' value={expenses} />
-      <TotalInfo icon='bill' title='Mes pasado' value='40' />
+      <TotalInfo
+        color='#000e33'
+        icon='stack'
+        title='Saldo'
+        value={total}
+      />
+      <TotalInfo
+        color='#4CAF50'
+        icon='withdraw'
+        title='Ingresos'
+        value={incomes}
+      />
+      <TotalInfo
+        color='#F44334'
+        icon='insert'
+        title='Gastos'
+        value={expenses}
+      />
     </ContainerTotal>
   )
 }
@@ -42,6 +56,6 @@ export default MounthValues
 const ContainerTotal = styled.div`
   padding-top: 2.9rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 `
