@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function TotalInfo({ icon, title, value }) {
+function TotalInfo({ color, icon, title, value }) {
   return (
-    <Container>
-      <Icon className={`uil uil-money-${icon}`} />
+    <Container color={color}>
+      <Icon color={color} className={`uil uil-money-${icon}`} />
       <p>{title}</p>
       <h2>${value}</h2>
     </Container>
@@ -24,7 +24,11 @@ const Container = styled.article`
   h2 {
     font-size: 2.4rem;
     font-weight: bold;
-    color: ${(props) => props.theme.darkBlue};
+    color: ${(props) => props.color};
+  }
+  p {
+    color: ${(props) => props.color};
+    font-weight: bold;
   }
 `
 const Icon = styled.i`
