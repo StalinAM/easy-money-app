@@ -8,7 +8,7 @@ import FormTransaction from './FormTransaction'
 function RowTable({ date, description, income, expense, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
   const [active, setActive] = useState(false)
-
+  const currentMonth = new Date().getMonth() + 1
   const { currentUser } = useContext(AuthContext)
   const [transaction, setTransaction] = useState({
     description,
@@ -25,7 +25,6 @@ function RowTable({ date, description, income, expense, docId }) {
         date: new Date().toISOString(),
         ...transaction
       }
-      console.log(newTransaction.date)
       await updateTransaction(docId, { ...newTransaction })
     }
     returnTransactions()
@@ -39,21 +38,24 @@ function RowTable({ date, description, income, expense, docId }) {
     await deleteTransaction(docId)
     returnTransactions()
   }
-
   return (
     <>
       <td>{date.slice(0, 10).split('-').reverse().join('-')}</td>
       <td>{description}</td>
       <td>{income != 0 ? `$${income}` : ''}</td>
       <td>{expense != 0 ? `$${expense}` : ''}</td>
-      <td>
-        <Icon onClick={() => setActive(!active)}>
-          <i className='uil uil-pen' />
-        </Icon>
-        <Icon onClick={removeTransaction}>
-          <i className='uil uil-trash-alt' />
-        </Icon>
-      </td>
+
+      {currentMonth === new Date(date).getMonth() + 1 && (
+        <td>
+          <Icon onClick={() => setActive(!active)}>
+            <i className='uil uil-pen' />
+          </Icon>
+          <Icon onClick={removeTransaction}>
+            <i className='uil uil-trash-alt' />
+          </Icon>
+        </td>
+      )}
+
       {active && (
         <FormTransaction
           handleSubmit={updateTransactionSubmit}
