@@ -120,7 +120,7 @@ const BoxData = styled.section`
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 2rem;
   position: relative;
 `
