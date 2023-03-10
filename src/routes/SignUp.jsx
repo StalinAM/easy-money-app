@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { registerUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { Input, LabelInput } from '../style/StyleComponents'
 
 function SignUp() {
   const [name, setName] = useState('')
@@ -23,24 +24,33 @@ function SignUp() {
         </Header>
         <FormC onSubmit={signUp}>
           <BoxData>
-            <Input
-              type='text'
-              placeholder='Ingrese tu nombre'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              type='email'
-              placeholder='Ingrese un correo'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type='password'
-              placeholder='Ingrese una contraseña'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div>
+              <LabelInput>Nombre</LabelInput>
+              <Input
+                type='text'
+                placeholder='nombre'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <LabelInput>Correo electrónico</LabelInput>
+              <Input
+                type='email'
+                placeholder='ejemplo@dominio.com'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <LabelInput>Contraseña</LabelInput>
+              <Input
+                type='password'
+                placeholder='contraseña'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
           </BoxData>
           <SubmitBtn type='submit'>Registrarse</SubmitBtn>
           <Login>
@@ -89,7 +99,7 @@ const FormC = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 350px;
-  gap: 1.125rem;
+  gap: 1rem;
   margin: 0 auto;
 `
 const BoxData = styled.section`
@@ -98,18 +108,6 @@ const BoxData = styled.section`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 2rem;
-`
-const Input = styled.input`
-  border: 2px solid ${(props) => props.theme.xLightBlue};
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: none;
-  color: ${(props) => props.theme.darkBlue};
-  font-weight: 400;
-  font-size: ${(props) => props.theme.mFont};
-  &::placeholder {
-    color: ${(props) => props.theme.gray};
-  }
 `
 const SubmitBtn = styled.button`
   padding: 0.75rem 1rem;
