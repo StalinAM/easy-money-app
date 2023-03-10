@@ -31,11 +31,18 @@ export const registerUser = async (name, email, password, navigate) => {
   }
 }
 
-export const loginUser = async (email, password, navigate) => {
+export const loginUser = async (email, password, navigate, setError) => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
     navigate('/dashboard')
-  } catch (error) {}
+  } catch (error) {
+    const errorCode = error.code
+    if (errorCode === 'auth/wrong-password') {
+      setError('La contraseña es incorrecta')
+    } else if (errorCode === 'auth/user-not-found') {
+      setError('El correo electrónico no fue encontrado')
+    }
+  }
 }
 
 export const logoutUser = async () => {
