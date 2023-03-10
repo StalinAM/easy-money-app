@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import { loginUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { Input } from '../style/StyleComponents'
+import { Input, LabelInput } from '../style/StyleComponents'
 
 function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
   const signIn = async (e) => {
     e.preventDefault()
-    loginUser(email, password, navigate)
+    loginUser(email, password, navigate, setError)
   }
   return (
     <Container>
@@ -27,18 +28,40 @@ function SignIn() {
         </Header>
         <FormC onSubmit={signIn}>
           <BoxData>
-            <Input
-              type='email'
-              placeholder='Ingresa un correo'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type='password'
-              placeholder='Ingresa una contraseña'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div>
+              <LabelInput htmlFor='email'>Correo electrónico</LabelInput>
+              <Input
+                name='email'
+                type='email'
+                placeholder='ejemplo@dominio.com'
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setError('')
+                }}
+                required
+              />
+            </div>
+            <div>
+              <LabelInput htmlFor='password'>Contraseña</LabelInput>
+              <Input
+                name='password'
+                type='password'
+                placeholder='contraseña'
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                  setError('')
+                }}
+                required
+              />
+            </div>
+            {error && (
+              <ErrorMessage>
+                <i className='uil uil-exclamation-triangle' />
+                {error}
+              </ErrorMessage>
+            )}
           </BoxData>
           <SubmitBtn type='submit'>Iniciar sesión</SubmitBtn>
           <SignUp>
@@ -90,7 +113,7 @@ const FormC = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 350px;
-  gap: 1.125rem;
+  gap: 1rem;
   margin: 0 auto;
 `
 const BoxData = styled.section`
@@ -99,8 +122,8 @@ const BoxData = styled.section`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  position: relative;
 `
-
 const SubmitBtn = styled.button`
   padding: 0.75rem 1rem;
   border-radius: 12px;
@@ -138,5 +161,18 @@ const SigninRS = styled.div`
     &:hover {
       color: ${(props) => props.theme.lightBlue};
     }
+  }
+`
+const ErrorMessage = styled.span`
+  position: absolute;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #f44334;
+  bottom: -2.4rem;
+  left: 0;
+  i {
+    color: #f44334;
+    font-size: ${(props) => props.theme.mFont};
   }
 `
