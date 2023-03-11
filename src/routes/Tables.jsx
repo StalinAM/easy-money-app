@@ -38,16 +38,20 @@ function Tables({ arrayTransactions }) {
         row='2/3'
       />
       <Pagination>
-        {currentMonthIndex != months.length - 1 && (
-          <BtnPage onClick={goToNextMonth}>
-            <i className='uil uil-angle-left' />
-          </BtnPage>
-        )}
-        {currentMonthIndex != 0 && (
-          <BtnPage onClick={goToPreviousMonth}>
-            <i className='uil uil-angle-right' />
-          </BtnPage>
-        )}
+        <div>
+          {currentMonthIndex != months.length - 1 && (
+            <BtnPage onClick={goToNextMonth}>
+              <i className='uil uil-angle-left' />
+            </BtnPage>
+          )}
+        </div>
+        <div>
+          {currentMonthIndex != 0 && (
+            <BtnPage onClick={goToPreviousMonth}>
+              <i className='uil uil-angle-right' />
+            </BtnPage>
+          )}
+        </div>
       </Pagination>
     </Container>
   )
@@ -61,7 +65,7 @@ const Container = styled.main`
   padding: 4rem 6rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-rows: 70px 1fr 40px;
   background-color: ${(props) => props.theme.blue};
 `
@@ -89,6 +93,9 @@ const Pagination = styled.div`
   margin: 0 auto;
   display: flex;
   gap: 1rem;
+  div {
+    width: 40px;
+  }
 `
 const BtnPage = styled.button`
   width: 40px;
