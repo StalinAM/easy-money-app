@@ -15,7 +15,13 @@ import {
 } from 'firebase/firestore'
 import { auth, db } from './firebase'
 
-export const registerUser = async (name, email, password, navigate) => {
+export const registerUser = async (
+  name,
+  email,
+  password,
+  navigate,
+  setError
+) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -27,7 +33,8 @@ export const registerUser = async (name, email, password, navigate) => {
     })
     navigate('/dashboard')
   } catch (error) {
-    console.log(error)
+    if (error.code === 'auth/email-already-in-use')
+      setError('El correo electrónico ya está registrado.')
   }
 }
 
