@@ -79,8 +79,8 @@ const ModalC = styled.div`
   background-color: ${(props) => props.theme.white};
   position: relative;
   border-radius: 30px;
-  width: 500px;
-  padding: 2rem 0;
+  width: 400px;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
   i {
@@ -91,12 +91,14 @@ const ModalC = styled.div`
     font-size: 3rem;
     cursor: pointer;
   }
+  @media screen and (max-width: 480px) {
+    width: 300px;
+  }
 `
 const FormC = styled.form`
   display: flex;
   flex-direction: column;
   min-width: 0;
-  max-width: 300px;
   gap: 1.125rem;
   margin: 0 auto;
 `
