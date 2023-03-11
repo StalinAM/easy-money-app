@@ -31,7 +31,13 @@ function Menu({ row, activeMenu, setActiveMenu }) {
   return (
     <Container activeMenu={activeMenu} row={row}>
       <div>
-        <img src={logo} alt='logo of easymoney' />
+        <Header>
+          <img src={logo} alt='logo of easymoney' />
+          <IconClose
+            onClick={() => setActiveMenu(false)}
+            className='uil uil-times'
+          />
+        </Header>
         <br />
         <MenuRoutes>
           {menuItems.map((item, index) => (
@@ -65,10 +71,10 @@ const Container = styled.aside`
   }
   @media screen and (max-width: 1140px) {
     display: ${(props) => (props.activeMenu ? 'flex' : 'none')};
-    position: absolute;
+    position: fixed;
     height: calc(100vh - 96px);
     left: 3rem;
-    top: 0;
+    top: 48px;
     z-index: 100;
   }
   @media screen and (max-width: 768px) {
@@ -79,7 +85,16 @@ const Container = styled.aside`
   }
   @media screen and (max-width: 480px) {
     height: calc(100vh - 64px);
+    top: 32px;
     left: 1rem;
+  }
+`
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  @media screen and (max-width: 1140px) {
+    justify-content: space-between;
   }
 `
 const MenuRoutes = styled.ul`
@@ -104,4 +119,13 @@ const Item = styled.li`
 const LinlStyle = styled(Link)`
   display: block;
   width: 100%;
+`
+const IconClose = styled.i`
+  display: none;
+  color: ${(props) => props.theme.white};
+  font-size: 2rem;
+  cursor: pointer;
+  @media screen and (max-width: 1140px) {
+    display: block;
+  }
 `
