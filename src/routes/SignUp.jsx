@@ -8,12 +8,13 @@ function SignUp() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
   const signUp = async (e) => {
     e.preventDefault()
-    registerUser(name, email, password, navigate)
+    registerUser(name, email, password, navigate, setError)
   }
 
   return (
@@ -51,6 +52,12 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {error && (
+              <ErrorMessage>
+                <i className='uil uil-exclamation-triangle' />
+                {error}
+              </ErrorMessage>
+            )}
           </BoxData>
           <SubmitBtn type='submit'>Registrarse</SubmitBtn>
           <Login>
@@ -76,6 +83,10 @@ const Content = styled.div`
   border-radius: 30px;
   width: 425px;
   padding: 4rem 0;
+  @media screen and (max-width: 480px) {
+    width: 340px;
+    padding: 3rem 0;
+  }
 `
 const Header = styled.header`
   position: absolute;
@@ -101,6 +112,9 @@ const FormC = styled.form`
   max-width: 350px;
   gap: 1rem;
   margin: 0 auto;
+  @media screen and (max-width: 480px) {
+    max-width: 280px;
+  }
 `
 const BoxData = styled.section`
   padding: 0;
@@ -108,6 +122,7 @@ const BoxData = styled.section`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  position: relative;
 `
 const SubmitBtn = styled.button`
   padding: 0.75rem 1rem;
@@ -132,5 +147,21 @@ const Login = styled.p`
     &:hover {
       color: ${(props) => props.theme.lightBlue};
     }
+  }
+`
+const ErrorMessage = styled.span`
+  position: absolute;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #f44334;
+  bottom: -2.4rem;
+  left: 0;
+  i {
+    color: #f44334;
+    font-size: ${(props) => props.theme.mFont};
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 0.875rem;
   }
 `

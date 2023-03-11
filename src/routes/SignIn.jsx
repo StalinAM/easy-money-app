@@ -87,6 +87,10 @@ const Content = styled.div`
   border-radius: 30px;
   width: 425px;
   padding: 5.5rem 0 3rem;
+  @media screen and (max-width: 480px) {
+    width: 340px;
+    padding: 4.5rem 0 3rem;
+  }
 `
 const Header = styled.header`
   position: absolute;
@@ -115,6 +119,9 @@ const FormC = styled.form`
   max-width: 350px;
   gap: 1rem;
   margin: 0 auto;
+  @media screen and (max-width: 480px) {
+    max-width: 280px;
+  }
 `
 const BoxData = styled.section`
   padding: 0;
@@ -174,5 +181,8 @@ const ErrorMessage = styled.span`
   i {
     color: #f44334;
     font-size: ${(props) => props.theme.mFont};
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 0.875rem;
   }
 `

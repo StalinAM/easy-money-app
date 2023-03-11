@@ -16,17 +16,21 @@ function Table({ row, title, arrayTransactions }) {
           </tr>
         </thead>
         <tbody>
-          {arrayTransactions.map((item) => (
-            <tr key={item.docId}>
-              <RowTable
-                date={item.date}
-                description={item.description}
-                income={item.income}
-                expense={item.expense}
-                docId={item.docId}
-              />
-            </tr>
-          ))}
+          {arrayTransactions ? (
+            arrayTransactions.map((item) => (
+              <tr key={item.docId}>
+                <RowTable
+                  date={item.date}
+                  description={item.description}
+                  income={item.income}
+                  expense={item.expense}
+                  docId={item.docId}
+                />
+              </tr>
+            ))
+          ) : (
+            <p>No hay transacciones</p>
+          )}
         </tbody>
       </BodyTable>
     </ContainerTable>
@@ -54,6 +58,12 @@ const ContainerTable = styled.div`
       props.theme.xLightBlue}; /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
   }
+  @media screen and (max-width: 1140px) {
+    grid-column: auto;
+  }
+  @media screen and (max-width: 768px) {
+    height: max-content;
+  }
 `
 const TitleTable = styled.header`
   color: ${(props) => props.theme.darkBlue};
@@ -72,10 +82,13 @@ const BodyTable = styled.table`
   tr {
     display: grid;
     justify-items: start;
-    grid-template-columns: 1fr 50% 1fr 1fr 1fr;
+    grid-template-columns:
+      100px minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr)
+      minmax(80px, 1fr);
     border-bottom: 2px solid ${(props) => props.theme.xLightBlue};
     align-items: center;
     text-transform: capitalize;
+    gap: 0.5rem;
     td {
       padding: 0.5rem 0.25rem;
     }

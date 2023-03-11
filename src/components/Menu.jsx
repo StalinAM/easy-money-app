@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
-function Menu({ row }) {
+function Menu({ row, activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
   const location = useLocation()
   const handleClick = () => {
@@ -29,7 +29,7 @@ function Menu({ row }) {
     setActive(index)
   }
   return (
-    <Container row={row}>
+    <Container activeMenu={activeMenu} row={row}>
       <div>
         <img src={logo} alt='logo of easymoney' />
         <br />
@@ -63,6 +63,24 @@ const Container = styled.aside`
   img {
     width: 15rem;
   }
+  @media screen and (max-width: 1140px) {
+    display: ${(props) => (props.activeMenu ? 'flex' : 'none')};
+    position: absolute;
+    height: calc(100vh - 96px);
+    left: 3rem;
+    top: 0;
+    z-index: 100;
+  }
+  @media screen and (max-width: 768px) {
+    img {
+      width: 11rem;
+    }
+    left: 1.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    height: calc(100vh - 64px);
+    left: 1rem;
+  }
 `
 const MenuRoutes = styled.ul`
   width: 100%;
@@ -79,7 +97,6 @@ const Item = styled.li`
   border-radius: 12px;
   cursor: pointer;
   background-color: ${(props) => (props.active ? '#0033bb' : 'none')};
-  /* border: 2px solid white; */
   &:hover {
     background-color: ${(props) => props.theme.lightBlue};
   }

@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
 
-function Profile() {
+function Profile({ setActiveMenu }) {
   const { currentUser } = useContext(AuthContext)
 
   return (
     <Navbar>
+      <IconOpen onClick={() => setActiveMenu(true)} className='uil uil-bars' />
       <div>
         <h2>{currentUser.displayName}</h2>
         <ImgProfile />
@@ -38,5 +39,17 @@ const Navbar = styled.nav`
     text-transform: capitalize;
     color: ${(props) => props.theme.white};
     margin-right: 1rem;
+  }
+  @media screen and (max-width: 1140px) {
+    grid-column: auto;
+    justify-content: space-between;
+  }
+`
+const IconOpen = styled.i`
+  display: none;
+  color: ${(props) => props.theme.white};
+  font-size: ${(props) => props.theme.xlFont};
+  @media screen and (max-width: 1140px) {
+    display: block;
   }
 `

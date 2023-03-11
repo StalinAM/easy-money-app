@@ -3,8 +3,10 @@ import Profile from '../components/Profile'
 import Table from '../components/Table'
 import Menu from '../components/Menu'
 import MounthValues from '../components/MounthValues'
+import { useState } from 'react'
 
 function Dashboard({ arrayTransactions }) {
+  const [activeMenu, setActiveMenu] = useState(false)
   const currentMonth = new Date().getMonth() + 1
   const currentYear = new Date().getFullYear()
 
@@ -17,8 +19,8 @@ function Dashboard({ arrayTransactions }) {
   })
   return (
     <Container>
-      <Menu row='1/5' />
-      <Profile />
+      <Menu activeMenu={activeMenu} setActiveMenu={setActiveMenu} row='1/5' />
+      <Profile setActiveMenu={setActiveMenu} />
       <MounthValues />
       <Table
         arrayTransactions={filteredTransactions}
@@ -40,4 +42,19 @@ const Container = styled.main`
   grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 1fr 1fr 1fr;
   background-color: ${(props) => props.theme.blue};
+  position: relative;
+  @media screen and (max-width: 1440px) {
+    padding: 3rem 3rem;
+  }
+  @media screen and (max-width: 1140px) {
+    grid-template-columns: 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    height: auto;
+    grid-template-rows: 70px 1fr max-content;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
 `
