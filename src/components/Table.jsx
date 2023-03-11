@@ -49,6 +49,7 @@ const ContainerTable = styled.div`
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
+    height: 5px;
   }
   &::-webkit-scrollbar-track {
     background: none; /* color of the tracking area */
@@ -63,6 +64,9 @@ const ContainerTable = styled.div`
   }
   @media screen and (max-width: 768px) {
     height: max-content;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 1rem;
   }
 `
 const TitleTable = styled.header`
@@ -91,6 +95,17 @@ const BodyTable = styled.table`
     gap: 0.5rem;
     td {
       padding: 0.5rem 0.25rem;
+    }
+  }
+  @media screen and (max-width: 780px) {
+    th:first-child,
+    td:first-child {
+      display: none;
+    }
+    tr {
+      grid-template-columns:
+        minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr)
+        minmax(80px, 1fr);
     }
   }
 `
