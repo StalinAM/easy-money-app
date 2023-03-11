@@ -1,25 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
-const Content = styled.div`
-  max-width: 50ch;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  h1 {
-    font-size: ${(props) => props.theme.xxlFont};
-    color: ${(props) => props.theme.white};
-  }
-  p {
-    font-size: ${(props) => props.theme.mFont};
-    color: ${(props) => props.theme.white};
-  }
-`
-const ContainerBtn = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-`
 function MainContent() {
   return (
     <section>
@@ -43,3 +24,30 @@ function MainContent() {
 }
 
 export default MainContent
+
+const Content = styled.div`
+  max-width: 50ch;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  h1 {
+    font-size: ${(props) => props.theme.xxlFont};
+    color: ${(props) => props.theme.white};
+  }
+  p {
+    font-size: ${(props) => props.theme.mFont};
+    color: ${(props) => props.theme.white};
+  }
+`
+const ContainerBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  @media screen and (max-width: 768px) {
+    gap: 2rem;
+  }
+  @media screen and (max-width: 480px) {
+    gap: 1rem;
+  }
+`
