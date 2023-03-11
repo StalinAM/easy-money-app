@@ -47,6 +47,7 @@ const Navbar = styled.nav`
 `
 const IconOpen = styled.i`
   display: none;
+  cursor: pointer;
   color: ${(props) => props.theme.white};
   font-size: ${(props) => props.theme.xlFont};
   @media screen and (max-width: 1140px) {
