@@ -74,7 +74,7 @@ export default RowTable
 const Icon = styled.button`
   background: none;
   i {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     font-size: ${(props) => props.theme.mFont};
     cursor: pointer;
     &:hover {
