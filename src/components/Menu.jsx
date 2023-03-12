@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
+import { Line } from '../style/StyleComponents'
 function Menu({ row, activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
   const location = useLocation()
@@ -38,7 +39,7 @@ function Menu({ row, activeMenu, setActiveMenu }) {
             className='uil uil-times'
           />
         </Header>
-        <br />
+        <Line />
         <MenuRoutes>
           {menuItems.map((item, index) => (
             <LinlStyle key={index} to={item.link}>
@@ -69,13 +70,16 @@ const Container = styled.aside`
   img {
     width: 15rem;
   }
+
   @media screen and (max-width: 1140px) {
-    display: ${(props) => (props.activeMenu ? 'flex' : 'none')};
+    transform: ${(props) =>
+      props.activeMenu ? 'translateX(0)' : 'translateX(-130%)'};
     position: fixed;
     height: calc(100vh - 96px);
     left: 3rem;
     top: 48px;
     z-index: 100;
+    transition: transform 0.5s ease-in-out;
   }
   @media screen and (max-width: 768px) {
     img {
