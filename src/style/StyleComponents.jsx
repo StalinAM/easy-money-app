@@ -17,3 +17,9 @@ export const LabelInput = styled.label`
   color: ${(props) => props.theme.darkLightBlue};
   font-weight: bold;
 `
+export const Line = styled.hr`
+  border: none;
+  margin: 1rem 0;
+  border-top: 2px solid ${(props) => props.theme.white};
+  width: 100%;
+`
