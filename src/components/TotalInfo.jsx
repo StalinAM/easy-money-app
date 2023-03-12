@@ -30,6 +30,9 @@ const Container = styled.article`
     color: ${(props) => props.color};
     font-weight: bold;
   }
+  @media screen and (max-width: 480px) {
+    padding: 2rem 1rem 0.5rem;
+  }
 `
 const Icon = styled.i`
   position: absolute;
@@ -42,4 +45,7 @@ const Icon = styled.i`
   left: 1.5rem;
   transform: translateY(-50%);
   box-shadow: #00000021 0px 1px 9px 0px;
+  @media screen and (max-width: 480px) {
+    padding: 0.313rem 0.938rem;
+  }
 `
