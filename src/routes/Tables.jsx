@@ -7,7 +7,7 @@ import { groupTransactionsByMonth } from '../components/groupsFunction'
 
 function Tables({ arrayTransactions }) {
   const [active, setActive] = useState(false)
-
+  const [activeMenu, setActiveMenu] = useState(false)
   const groups = groupTransactionsByMonth(arrayTransactions)
   const months = Object.keys(groups)
   const [currentMonthIndex, setCurrentMonthIndex] = useState(0)
@@ -24,11 +24,13 @@ function Tables({ arrayTransactions }) {
   const transactionsForCurrentMonth = groups[currentMonth]
   return (
     <Container>
-      <Menu row='1/4' />
+      <Menu activeMenu={activeMenu} setActiveMenu={setActiveMenu} row='1/4' />
       <ContainerBtn>
-        <BtnModal onClick={() => setActive(!active)}>
-          Nueva transacción
-        </BtnModal>
+        <IconOpen
+          onClick={() => setActiveMenu(true)}
+          className='uil uil-bars'
+        />
+        <BtnModal onClick={() => setActive(!active)}>Crear nueva</BtnModal>
         <h2>{currentMonth}</h2>
       </ContainerBtn>
       <Transactions active={active} setActive={setActive} />
@@ -61,17 +63,31 @@ export default Tables
 
 const Container = styled.main`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 4rem 6rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 1fr 40px;
   background-color: ${(props) => props.theme.blue};
+  position: relative;
+  @media screen and (max-width: 1440px) {
+    padding: 3rem 3rem;
+  }
+  @media screen and (max-width: 1140px) {
+    grid-template-columns: 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem 1.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
 `
 const ContainerBtn = styled.header`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem 0 0;
   h2 {
     text-transform: capitalize;
@@ -106,5 +122,14 @@ const BtnPage = styled.button`
   i {
     color: ${(props) => props.theme.white};
     font-size: ${(props) => props.theme.lFont};
+  }
+`
+const IconOpen = styled.i`
+  display: none;
+  cursor: pointer;
+  color: ${(props) => props.theme.white};
+  font-size: ${(props) => props.theme.xlFont};
+  @media screen and (max-width: 1140px) {
+    display: block;
   }
 `
