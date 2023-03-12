@@ -97,7 +97,7 @@ const BodyTable = styled.table`
       padding: 0.5rem 0.25rem;
     }
   }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 768px) {
     th:first-child,
     td:first-child {
       display: none;
@@ -105,7 +105,7 @@ const BodyTable = styled.table`
     tr {
       grid-template-columns:
         minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr)
-        minmax(80px, 1fr);
+        minmax(60px, 1fr);
     }
   }
 `
