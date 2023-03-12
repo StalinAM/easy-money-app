@@ -10,7 +10,13 @@ function Profile({ setActiveMenu }) {
       <IconOpen onClick={() => setActiveMenu(true)} className='uil uil-bars' />
       <div>
         <h2>{currentUser.displayName}</h2>
-        <ImgProfile />
+        {/* <ImgProfile>
+          {currentUser.photoURL ? (
+            <img src={currentUser.photoURL} alt='photo profile' />
+          ) : (
+            <Letter>{currentUser.displayName}</Letter>
+          )}
+        </ImgProfile> */}
       </div>
     </Navbar>
   )
@@ -19,11 +25,20 @@ function Profile({ setActiveMenu }) {
 export default Profile
 
 const ImgProfile = styled.div`
-  width: 64px;
-  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  background-color: black;
+  background: none;
   border: 2px solid ${(props) => props.theme.white};
+`
+const Letter = styled.span`
+  font-size: ${(props) => props.theme.lFont};
+  text-transform: uppercase;
+  font-weight: bold;
+  color: ${(props) => props.theme.white};
 `
 const Navbar = styled.nav`
   display: flex;
