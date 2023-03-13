@@ -30,8 +30,8 @@ function Tables({ arrayTransactions }) {
           onClick={() => setActiveMenu(true)}
           className='uil uil-bars'
         />
-        <BtnModal onClick={() => setActive(!active)}>Crear nueva</BtnModal>
         <h2>{currentMonth}</h2>
+        <BtnModal onClick={() => setActive(!active)}>Crear nueva</BtnModal>
       </ContainerBtn>
       <Transactions active={active} setActive={setActive} />
       <Table
@@ -71,6 +71,7 @@ const Container = styled.main`
   grid-template-rows: 70px 1fr 40px;
   background-color: ${(props) => props.theme.blue};
   position: relative;
+
   @media screen and (max-width: 1440px) {
     padding: 3rem 3rem;
   }
@@ -88,7 +89,10 @@ const ContainerBtn = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0 0;
+  padding: 0 1rem;
+  background-color: ${(props) => props.theme.darkLightBlue};
+  border-radius: 12px;
+  box-shadow: #00000021 0px 1px 9px 0px;
   h2 {
     text-transform: capitalize;
     color: ${(props) => props.theme.white};
@@ -119,6 +123,7 @@ const BtnPage = styled.button`
   border-radius: 50%;
   border: none;
   background-color: ${(props) => props.theme.lightBlue};
+  box-shadow: #00000021 0px 1px 9px 0px;
   i {
     color: ${(props) => props.theme.white};
     font-size: ${(props) => props.theme.lFont};
