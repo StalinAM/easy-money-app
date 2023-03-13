@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
+import resumen from '../assets/resumen.webp'
 function MainContent() {
   return (
     <section>
-      <article>
+      <Container>
         <Content>
           <h1>Recupera el poder sobre tus finanzas</h1>
           <p>
@@ -17,14 +18,26 @@ function MainContent() {
             <Button text='Registrarse' link='/signup' />
           </ContainerBtn>
         </Content>
-        <img src='' alt='' />
-      </article>
+        <img src={resumen} alt='' />
+      </Container>
     </section>
   )
 }
 
 export default MainContent
 
+const Container = styled.article`
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-width: 40rem;
+    border-radius: 12px;
+    box-shadow: #00000021 0px 1px 9px 0px;
+  }
+`
 const Content = styled.div`
   max-width: 50ch;
   display: flex;
@@ -43,7 +56,7 @@ const ContainerBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2.5rem;
+  gap: 1rem;
   @media screen and (max-width: 768px) {
     gap: 2rem;
   }
