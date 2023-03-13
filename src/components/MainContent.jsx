@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
 import resumen from '../assets/resumen.webp'
+import url from '../assets/background_home.svg'
 function MainContent() {
   return (
-    <section>
+    <SectionC>
+      <Background url={url} />
       <Container>
         <Content>
-          <h1>Recupera el poder sobre tus finanzas</h1>
+          <h1>Toma el control de tus finanzas</h1>
           <p>
             Nuestra app web de finanzas personales, diseñada para simplificar la
             gestión del dinero, permite llevar un seguimiento rápido y fácil de
@@ -20,16 +22,43 @@ function MainContent() {
         </Content>
         <img src={resumen} alt='' />
       </Container>
-    </section>
+    </SectionC>
   )
 }
 
 export default MainContent
 
+const SectionC = styled.section`
+  min-height: calc(100vh - 133px);
+  position: relative;
+  padding: 4rem 6rem 2rem;
+  @media screen and (max-width: 1080px) {
+    padding: 3rem 3rem 2rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 1rem 1rem 2rem;
+  }
+`
+
+const Background = styled.div`
+  position: absolute;
+  background: url(${(props) => props.url});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+`
 const Container = styled.article`
   display: flex;
   gap: 2rem;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   img {
