@@ -23,15 +23,6 @@ const GlobalStyles = createGlobalStyle`
     header{
         padding: 3rem 6rem;
     }
-    section{
-        padding: 6rem 0 2rem;
-        @media screen and (max-width: 1080px) {
-            padding: 3rem 0 2rem;
-        }
-        @media screen and (max-width: 768px) {
-            padding: 1.5rem 0 2rem;
-        }
-    }
     article{
         max-width: 75rem;
         margin: 0 auto;
