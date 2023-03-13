@@ -13,7 +13,7 @@ function Button({ text, link, handleClick = () => {} }) {
 export default Button
 
 const Btn = styled(Link)`
-  padding: 0.56rem 2.5rem;
+  padding: 0.56rem 2rem;
   border-radius: 12px;
   font-size: ${(props) => props.theme.mFont};
   background-color: ${(props) => props.theme.lightBlue};
