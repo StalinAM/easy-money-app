@@ -46,6 +46,10 @@ const Navbar = styled.nav`
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  padding: 0 1rem;
+  background-color: ${(props) => props.theme.darkLightBlue};
+  border-radius: 12px;
+  box-shadow: #00000021 0px 1px 9px 0px;
   div {
     display: flex;
     align-items: center;
