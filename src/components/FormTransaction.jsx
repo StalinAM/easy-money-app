@@ -21,7 +21,6 @@ function FormTransaction({
       <ModalC>
         <i onClick={() => setActive(!active)} className='uil uil-times' />
         <FormC onSubmit={handleSubmit}>
-          <h2>Nueva transacción</h2>
           <div>
             <label htmlFor='description'>Descripcion</label>
             <Input
