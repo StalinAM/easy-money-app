@@ -7,7 +7,7 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  max-width: 65rem;
+  max-width: 75rem;
 `
 const Logo = styled.img`
   width: 13rem;

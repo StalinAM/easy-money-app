@@ -15,10 +15,7 @@ const GlobalStyles = createGlobalStyle`
         width: 100%;
         min-height: 100vh;
         font-family: 'Nunito', sans-serif;
-        background: url(${background});
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: bottom;
+        background-color: #0066FF;
         /* @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         } */
@@ -36,7 +33,7 @@ const GlobalStyles = createGlobalStyle`
         }
     }
     article{
-        max-width: 65rem;
+        max-width: 75rem;
         margin: 0 auto;
     }
     input, textarea{
