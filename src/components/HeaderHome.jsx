@@ -2,6 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 
+function HeaderHome() {
+  return (
+    <header>
+      <Navbar>
+        <Logo src={logo} alt='logo of easymoney' />
+        <List>
+          <Item>
+            <a href='#features'>Características</a>
+          </Item>
+          <Item>
+            <a href=''>Empezar</a>
+          </Item>
+        </List>
+      </Navbar>
+    </header>
+  )
+}
+
+export default HeaderHome
+
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -34,23 +54,3 @@ const Item = styled.li`
     width: 100%;
   }
 `
-
-function HeaderHome() {
-  return (
-    <header>
-      <Navbar>
-        <Logo src={logo} alt='logo of easymoney' />
-        <List>
-          <Item>
-            <a href=''>Características</a>
-          </Item>
-          <Item>
-            <a href=''>Empezar</a>
-          </Item>
-        </List>
-      </Navbar>
-    </header>
-  )
-}
-
-export default HeaderHome
