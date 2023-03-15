@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Features from '../components/Features'
+import Features from '../components/Features/Features'
 import HeaderHome from '../components/HeaderHome'
 import MainContent from '../components/MainContent'
 
