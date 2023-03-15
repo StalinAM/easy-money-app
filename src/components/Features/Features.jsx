@@ -13,7 +13,6 @@ function Features() {
       <Login />
       <View />
       <NewTransaction />
-      <BackgroundBot url={backgroundBot} />
     </SectionC>
   )
 }
@@ -46,18 +45,6 @@ const Background = styled.div`
   width: 100%;
   height: 100vh;
   top: 0;
-  left: 0;
-  z-index: -1;
-`
-const BackgroundBot = styled.div`
-  position: absolute;
-  background: url(${(props) => props.url});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  bottom: 0;
   left: 0;
   z-index: -1;
 `
