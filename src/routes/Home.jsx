@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Features from '../components/Features/Features'
+import GetStarted from '../components/GetStarted'
 import HeaderHome from '../components/HeaderHome'
 import MainContent from '../components/MainContent'
 
@@ -11,6 +12,7 @@ function Home() {
       <MainContainer>
         <MainContent />
         <Features />
+        <GetStarted />
       </MainContainer>
     </>
   )
