@@ -64,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
         background: none;        /* color of the tracking area */
     }
     body::-webkit-scrollbar-thumb {
-        background-color: #8176AF;    /* color of the scroll thumb */
+        background-color: white;    /* color of the scroll thumb */
         border-radius: 20px;       /* roundness of the scroll thumb */
     }
 `
