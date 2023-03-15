@@ -12,7 +12,7 @@ function HeaderHome() {
             <a href='#features'>Características</a>
           </Item>
           <Item>
-            <a href=''>Empezar</a>
+            <a href='#getstarted'>Empezar</a>
           </Item>
         </List>
       </Navbar>
