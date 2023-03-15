@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import table from '../../assets/table.webp'
+import tableImg from '../../assets/table.webp'
 
 function View() {
   return (
@@ -18,7 +18,7 @@ function View() {
           informadas en cuanto al manejo de tus finanzas.
         </p>
       </Content>
-      <img src={table} alt='' />
+      <img src={tableImg} alt='' />
     </Container>
   )
 }
