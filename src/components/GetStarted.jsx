@@ -23,6 +23,9 @@ export default GetStarted
 const SectionC = styled.section`
   position: relative;
   padding: 4rem 6rem 2rem;
+  height: 50vh;
+  display: flex;
+  align-items: center;
   @media screen and (max-width: 1080px) {
     padding: 3rem 3rem 2rem;
   }
@@ -52,6 +55,7 @@ const Title = styled.h2`
   font-size: ${(props) => props.theme.xxlFont};
   font-weight: bold;
   color: ${(props) => props.theme.white};
+  text-align: center;
   span {
     font-size: ${(props) => props.theme.lFont};
     font-weight: 300;
@@ -61,9 +65,11 @@ const ContainerBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 3rem;
   @media screen and (max-width: 768px) {
     gap: 2rem;
+    justify-content: center;
   }
   @media screen and (max-width: 480px) {
     gap: 1rem;

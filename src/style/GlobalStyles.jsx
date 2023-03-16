@@ -22,6 +22,12 @@ const GlobalStyles = createGlobalStyle`
     }
     header{
         padding: 3rem 6rem;
+        @media screen and (max-width: 768px) {
+            padding: 3rem 1.5rem;
+        }
+        @media screen and (max-width: 480px) {
+            padding: 2rem 1rem;
+        }
     }
     article{
         max-width: 75rem;
