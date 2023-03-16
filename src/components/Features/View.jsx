@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import tableImg from '../../assets/table.webp'
+import table from '../../assets/table.webp'
 
 function View() {
   return (
@@ -18,7 +18,7 @@ function View() {
           informadas en cuanto al manejo de tus finanzas.
         </p>
       </Content>
-      <img src={tableImg} alt='' />
+      <img src={table} alt='' />
     </Container>
   )
 }
@@ -35,6 +35,9 @@ const Container = styled.article`
     max-width: 40rem;
     border-radius: 12px;
     box-shadow: #00000021 0px 1px 9px 0px;
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+    }
   }
 `
 const Content = styled.div`
