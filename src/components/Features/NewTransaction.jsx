@@ -31,6 +31,9 @@ const Container = styled.article`
     max-width: 30rem;
     border-radius: 12px;
     box-shadow: #00000021 0px 1px 9px 0px;
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+    }
   }
 `
 const Content = styled.div`
