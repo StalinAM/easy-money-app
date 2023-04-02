@@ -29,18 +29,18 @@ function MounthValues() {
   const total = incomes - expenses
   return (
     <ContainerTotal>
-      <TotalInfo color='#000e33' icon='stack' title='Saldo' value={total} />
+      <TotalInfo color='#000e33' icon='stack' title='Saldo' value={total.toFixed(2)} />
       <TotalInfo
         color='#4CAF50'
         icon='withdraw'
         title='Ingresos'
-        value={incomes}
+        value={incomes.toFixed(2)}
       />
       <TotalInfo
         color='#F44334'
         icon='insert'
         title='Gastos'
-        value={expenses}
+        value={expenses.toFixed(2)}
       />
     </ContainerTotal>
   )
