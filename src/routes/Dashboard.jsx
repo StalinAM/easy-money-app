@@ -35,7 +35,7 @@ export default Dashboard
 
 const Container = styled.main`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding: 4rem 6rem;
   display: grid;
   gap: 2rem;
