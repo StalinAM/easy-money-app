@@ -53,6 +53,16 @@ function FormTransaction({
               />
             </div>
           </ContainerValues>
+          <div>
+            <label htmlFor='savings'>Ahorro</label>
+            <Input
+              name='savings'
+              type='number'
+              placeholder='0'
+              value={transaction.savings}
+              onChange={handleInputChange}
+            />
+          </div>
           <SubmitBtn type='submit'>Añadir</SubmitBtn>
         </FormC>
       </ModalC>

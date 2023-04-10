@@ -25,11 +25,21 @@ function MounthValues() {
       total + parseFloat(transaction.income ? transaction.income : 0),
     0
   )
+  const savings = filteredTransactions.reduce(
+    (total, transaction) =>
+      total + parseFloat(transaction.savings ? transaction.savings : 0),
+    0
+  )
 
   const total = incomes - expenses
   return (
     <ContainerTotal>
-      <TotalInfo color='#000e33' icon='stack' title='Saldo' value={total.toFixed(2)} />
+      <TotalInfo
+        color='#000e33'
+        icon='stack'
+        title='Saldo'
+        value={total.toFixed(2)}
+      />
       <TotalInfo
         color='#4CAF50'
         icon='withdraw'
@@ -41,6 +51,12 @@ function MounthValues() {
         icon='insert'
         title='Gastos'
         value={expenses.toFixed(2)}
+      />
+      <TotalInfo
+        color='#004CDF'
+        icon='insert'
+        title='Ahorros'
+        value={savings.toFixed(2)}
       />
     </ContainerTotal>
   )

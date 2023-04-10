@@ -5,7 +5,7 @@ import { TransactionContext } from '../context/TransactionsContext'
 import { deleteTransaction, updateTransaction } from '../firebase/services'
 import FormTransaction from './FormTransaction'
 
-function RowTable({ date, description, income, expense, docId }) {
+function RowTable({ date, description, income, expense, savings, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
   const [active, setActive] = useState(false)
   const currentMonth = new Date().getMonth() + 1
@@ -13,12 +13,13 @@ function RowTable({ date, description, income, expense, docId }) {
   const [transaction, setTransaction] = useState({
     description,
     expense,
-    income
+    income,
+    savings
   })
   const editTransaction = async () => {
     if (
       transaction.description &&
-      (transaction.expense || transaction.income)
+      (transaction.expense || transaction.income || transaction.savings)
     ) {
       const newTransaction = {
         uid: currentUser.uid,
@@ -42,8 +43,13 @@ function RowTable({ date, description, income, expense, docId }) {
     <>
       <td>{date.slice(0, 10).split('-').reverse().join('-')}</td>
       <td>{description}</td>
-      <td>{income != 0 ? `$${income}` : ''}</td>
-      <td>{expense != 0 ? `$${expense}` : ''}</td>
+      <td>{income !== 0 && income !== '0' ? `$${income}` : ''}</td>
+      <td>{expense !== 0 && expense !== '0' ? `$${expense}` : ''}</td>
+      <td>
+        {savings !== undefined && savings !== 0 && savings !== '0'
+          ? `$${savings}`
+          : ''}
+      </td>
 
       {currentMonth === new Date(date).getMonth() + 1 && (
         <td>

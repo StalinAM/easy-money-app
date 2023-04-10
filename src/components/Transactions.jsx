@@ -10,13 +10,14 @@ function Transactions({ active, setActive }) {
   const [transaction, setTransaction] = useState({
     description: '',
     expense: 0,
-    income: 0
+    income: 0,
+    savings: 0
   })
 
   const addTransaction = async () => {
     if (
       transaction.description &&
-      (transaction.expense || transaction.income)
+      (transaction.expense || transaction.income || transaction.savings)
     ) {
       const newTransaction = {
         uid: currentUser.uid,
@@ -31,7 +32,7 @@ function Transactions({ active, setActive }) {
     e.preventDefault()
     addTransaction()
     setActive(!active)
-    setTransaction({ description: '', expense: '', income: '' })
+    setTransaction({ description: '', expense: '', income: '', savings: '' })
   }
   return (
     <>

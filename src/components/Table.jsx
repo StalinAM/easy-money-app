@@ -12,6 +12,7 @@ function Table({ row, title, arrayTransactions }) {
             <th>Descripción</th>
             <th>Ingreso</th>
             <th>Egreso</th>
+            <th>Ahorro</th>
             <th>Editar</th>
           </tr>
         </thead>
@@ -24,6 +25,7 @@ function Table({ row, title, arrayTransactions }) {
                   description={item.description}
                   income={item.income}
                   expense={item.expense}
+                  savings={item.savings}
                   docId={item.docId}
                 />
               </tr>
@@ -87,7 +89,10 @@ const BodyTable = styled.table`
     display: grid;
     justify-items: start;
     grid-template-columns:
-      100px minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr)
+      100px minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr) minmax(
+        60px,
+        1fr
+      )
       minmax(80px, 1fr);
     border-bottom: 2px solid ${(props) => props.theme.xLightBlue};
     align-items: center;
@@ -104,7 +109,10 @@ const BodyTable = styled.table`
     }
     tr {
       grid-template-columns:
-        minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr)
+        minmax(max-content, 60%) minmax(60px, 1fr) minmax(60px, 1fr) minmax(
+          60px,
+          1fr
+        )
         minmax(60px, 1fr);
     }
   }
