@@ -36,7 +36,7 @@ export default Dashboard
 const Container = styled.main`
   width: 100%;
   height: 100vh;
-  padding: 4rem 6rem;
+  padding: 2rem 3rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: 300px 1fr;
@@ -54,6 +54,6 @@ const Container = styled.main`
     grid-template-rows: 70px 1fr max-content;
   }
   @media screen and (max-width: 480px) {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
   }
 `

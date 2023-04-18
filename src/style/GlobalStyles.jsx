@@ -21,12 +21,12 @@ const GlobalStyles = createGlobalStyle`
         } */
     }
     header{
-        padding: 3rem 6rem;
+        padding: 3rem 4rem;
         @media screen and (max-width: 768px) {
             padding: 3rem 1.5rem;
         }
         @media screen and (max-width: 480px) {
-            padding: 2rem 1rem;
+            padding: 1rem 1rem 1.5rem;
         }
     }
     article{
