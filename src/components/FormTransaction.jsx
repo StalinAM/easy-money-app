@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Input } from '../style/StyleComponents'
+import { Input, LabelInput } from '../style/StyleComponents'
 import 'dayjs/locale/es'
 function FormTransaction({
   handleSubmit,
@@ -19,10 +19,9 @@ function FormTransaction({
   return (
     <Container>
       <ModalC>
-        <i onClick={() => setActive(!active)} className='uil uil-times' />
         <FormC onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='description'>Descripcion</label>
+            <LabelInput htmlFor='description'>Descripción</LabelInput>
             <Input
               name='description'
               type='text'
@@ -33,7 +32,7 @@ function FormTransaction({
           </div>
           <ContainerValues>
             <div>
-              <label htmlFor='income'>Ingreso</label>
+              <LabelInput htmlFor='income'>Ingreso</LabelInput>
               <Input
                 name='income'
                 type='number'
@@ -43,7 +42,7 @@ function FormTransaction({
               />
             </div>
             <div>
-              <label htmlFor='expense'>Gasto</label>
+              <LabelInput htmlFor='expense'>Gasto</LabelInput>
               <Input
                 name='expense'
                 type='number'
@@ -54,7 +53,7 @@ function FormTransaction({
             </div>
           </ContainerValues>
           <div>
-            <label htmlFor='savings'>Ahorro</label>
+            <LabelInput htmlFor='savings'>Ahorro</LabelInput>
             <Input
               name='savings'
               type='number'
@@ -63,7 +62,10 @@ function FormTransaction({
               onChange={handleInputChange}
             />
           </div>
-          <SubmitBtn type='submit'>Añadir</SubmitBtn>
+          <ContainerBtns>
+            <Button type='submit'>Añadir</Button>
+            <Button onClick={() => setActive(!active)}>Cerrar</Button>
+          </ContainerBtns>
         </FormC>
       </ModalC>
     </Container>
@@ -92,14 +94,6 @@ const ModalC = styled.div`
   padding: 2rem;
   align-items: center;
   justify-content: center;
-  i {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    color: ${(props) => props.theme.blue};
-    font-size: 3rem;
-    cursor: pointer;
-  }
   @media screen and (max-width: 480px) {
     width: 300px;
   }
@@ -111,15 +105,23 @@ const FormC = styled.form`
   gap: 1.125rem;
   margin: 0 auto;
 `
-const SubmitBtn = styled.button`
+const ContainerBtns = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+`
+const Button = styled.button`
+  width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 12px;
   color: ${(props) => props.theme.white};
   font-weight: 700;
-  background-color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.black_500};
   font-size: ${(props) => props.theme.mFont};
   &:hover {
-    background-color: ${(props) => props.theme.lightBlue};
+    background: none;
+    box-shadow: inset 0 0 0 4px ${(props) => props.theme.black_500};
+    color: ${(props) => props.theme.black_500};
   }
 `
 const ContainerValues = styled.div`
