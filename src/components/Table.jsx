@@ -3,9 +3,9 @@ import RowTable from './RowTable'
 
 function Table({ row, title, arrayTransactions }) {
   return (
-    <Container>
+    <Container row={row}>
       <TitleTable>{title}</TitleTable>
-      <ContainerTable row={row}>
+      <ContainerTable>
         <BodyTable>
           <thead>
             <tr>
@@ -44,14 +44,19 @@ function Table({ row, title, arrayTransactions }) {
 export default Table
 
 const Container = styled.div`
+  grid-row: ${(props) => props.row};
   padding-right: 1rem;
+  grid-column: 2;
+  @media screen and (max-width: 1140px) {
+    grid-column: 1;
+    overflow-x: scroll;
+  }
 `
 const ContainerTable = styled.div`
+  height: calc(100% - 83px);
+  overflow-y: scroll;
   background-color: ${(props) => props.theme.white};
   border-radius: 0 0 16px 16px;
-  grid-column: 2;
-  grid-row: ${(props) => props.row};
-  overflow-y: scroll;
   padding: 0.5rem 1.5rem;
   border-top: 0;
   border-left: 2px;
@@ -93,7 +98,7 @@ const BodyTable = styled.table`
   thead > tr {
     padding-bottom: 1rem;
     text-transform: uppercase;
-    font-size: ${(props) => props.theme.xsFont};
+    font-size: 14px;
     color: ${(props) => props.theme.black_400};
   }
   tr {

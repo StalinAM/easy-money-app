@@ -61,9 +61,9 @@ function MounthValues() {
 export default MounthValues
 
 const ContainerTotal = styled.div`
-  padding-top: 2.9rem;
+  padding-top: 2.1rem;
   padding-right: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 2rem;
+  gap: 2.4rem;
 `

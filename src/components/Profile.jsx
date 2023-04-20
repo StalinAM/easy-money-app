@@ -46,7 +46,7 @@ const Navbar = styled.nav`
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 1rem 1.5rem 0;
+  padding: 1.5rem 1rem 0 0;
   border-radius: 12px;
   div {
     display: flex;

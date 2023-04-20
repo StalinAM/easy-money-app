@@ -23,7 +23,7 @@ function Dashboard({ arrayTransactions }) {
       <Profile setActiveMenu={setActiveMenu} />
       <MounthValues />
       <Table
-        arrayTransactions={filteredTransactions}
+        arrayTransactions={filteredTransactions.slice(0, 9)}
         title='Ultimas transacciones'
         row='3/5'
       />
@@ -48,8 +48,8 @@ const Container = styled.main`
     grid-template-columns: 1fr;
   }
   @media screen and (max-width: 768px) {
+    padding-bottom: 1rem;
+    height: auto;
     grid-template-rows: 70px 1fr max-content;
-  }
-  @media screen and (max-width: 480px) {
   }
 `

@@ -64,6 +64,7 @@ const Container = styled.aside`
   align-items: center;
   background-color: ${(props) => props.theme.black_200};
   padding: 1.5rem 1rem;
+  height: 100%;
   img {
     width: 15rem;
   }
@@ -72,7 +73,6 @@ const Container = styled.aside`
     transform: ${(props) =>
       props.activeMenu ? 'translateX(0)' : 'translateX(-100%)'};
     position: fixed;
-    height: 100vh;
     left: 0;
     top: 0;
     z-index: 100;
@@ -82,12 +82,6 @@ const Container = styled.aside`
     img {
       width: 11rem;
     }
-    left: 1.5rem;
-  }
-  @media screen and (max-width: 480px) {
-    height: calc(100vh - 64px);
-    top: 32px;
-    left: 1rem;
   }
 `
 const Header = styled.div`
