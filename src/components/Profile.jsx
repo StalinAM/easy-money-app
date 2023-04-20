@@ -55,7 +55,6 @@ const Navbar = styled.nav`
   h2 {
     text-transform: capitalize;
     color: ${(props) => props.theme.black};
-    margin-right: 1rem;
   }
   @media screen and (max-width: 1140px) {
     grid-column: auto;
