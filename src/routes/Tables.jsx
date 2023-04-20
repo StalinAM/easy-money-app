@@ -64,49 +64,41 @@ export default Tables
 const Container = styled.main`
   width: 100%;
   height: 100vh;
-  padding: 4rem 6rem;
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 70px 1fr 40px;
-  background-color: ${(props) => props.theme.blue};
+  grid-template-rows: 70px 1fr 65px;
   position: relative;
-
-  @media screen and (max-width: 1440px) {
-    padding: 3rem 3rem;
-  }
   @media screen and (max-width: 1140px) {
+    padding-left: 1rem;
     grid-template-columns: 1fr;
   }
   @media screen and (max-width: 768px) {
-    padding: 3rem 1.5rem;
-  }
-  @media screen and (max-width: 480px) {
-    padding: 2rem 1rem;
+    height: auto;
   }
 `
 const ContainerBtn = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
-  background-color: ${(props) => props.theme.darkLightBlue};
+  padding: 1.5rem 1rem 0 0;
   border-radius: 12px;
-  box-shadow: #00000021 0px 1px 9px 0px;
   h2 {
     text-transform: capitalize;
-    color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.black_500};
   }
 `
 const BtnModal = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 12px;
   font-size: ${(props) => props.theme.mFont};
-  background-color: ${(props) => props.theme.lightBlue};
+  background-color: ${(props) => props.theme.black_500};
   color: ${(props) => props.theme.white};
   box-shadow: #00000021 0px 1px 9px 0px;
   &:hover {
-    border: 1px solid ${(props) => props.theme.white};
+    background: none;
+    box-shadow: inset 0 0 0 4px ${(props) => props.theme.black_500};
+    color: ${(props) => props.theme.black_500};
   }
 `
 const Pagination = styled.div`
@@ -122,8 +114,7 @@ const BtnPage = styled.button`
   height: 40px;
   border-radius: 50%;
   border: none;
-  background-color: ${(props) => props.theme.lightBlue};
-  box-shadow: #00000021 0px 1px 9px 0px;
+  background-color: ${(props) => props.theme.black_500};
   i {
     color: ${(props) => props.theme.white};
     font-size: ${(props) => props.theme.lFont};
@@ -132,7 +123,7 @@ const BtnPage = styled.button`
 const IconOpen = styled.i`
   display: none;
   cursor: pointer;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   font-size: ${(props) => props.theme.xlFont};
   @media screen and (max-width: 1140px) {
     display: block;
