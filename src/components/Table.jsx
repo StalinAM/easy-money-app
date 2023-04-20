@@ -57,7 +57,7 @@ const ContainerTable = styled.div`
   overflow-y: scroll;
   background-color: ${(props) => props.theme.white};
   border-radius: 0 0 16px 16px;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-top: 0;
   border-left: 2px;
   border-right: 2px;
