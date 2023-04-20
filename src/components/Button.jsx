@@ -16,7 +16,7 @@ const Btn = styled(Link)`
   padding: 0.56rem 2rem;
   border-radius: 12px;
   font-size: ${(props) => props.theme.mFont};
-  background-color: ${(props) => props.theme.lightBlue};
+  background-color: ${(props) => props.theme.black_500};
   color: ${(props) => props.theme.white};
   transition: all 0.3s ease;
   &:hover {

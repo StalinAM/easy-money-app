@@ -36,24 +36,20 @@ export default Dashboard
 const Container = styled.main`
   width: 100%;
   height: 100vh;
-  padding: 2rem 3rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 1fr 1fr 1fr;
-  background-color: ${(props) => props.theme.blue};
   position: relative;
   @media screen and (max-width: 1440px) {
-    padding: 3rem 3rem;
   }
   @media screen and (max-width: 1140px) {
+    padding-left: 1rem;
     grid-template-columns: 1fr;
   }
   @media screen and (max-width: 768px) {
-    padding: 3rem 1.5rem;
     grid-template-rows: 70px 1fr max-content;
   }
   @media screen and (max-width: 480px) {
-    padding: 1.5rem 1rem;
   }
 `

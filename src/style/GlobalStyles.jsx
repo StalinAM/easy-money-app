@@ -15,7 +15,6 @@ const GlobalStyles = createGlobalStyle`
         width: 100%;
         min-height: 100vh;
         font-family: 'Nunito', sans-serif;
-        background-color: #0066FF;
         /* @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         } */

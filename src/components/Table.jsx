@@ -3,52 +3,62 @@ import RowTable from './RowTable'
 
 function Table({ row, title, arrayTransactions }) {
   return (
-    <ContainerTable row={row}>
+    <Container>
       <TitleTable>{title}</TitleTable>
-      <BodyTable>
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Descripción</th>
-            <th>Ingreso</th>
-            <th>Egreso</th>
-            <th>Ahorro</th>
-            <th>Editar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {arrayTransactions ? (
-            arrayTransactions.map((item) => (
-              <tr key={item.docId}>
-                <RowTable
-                  date={item.date}
-                  description={item.description}
-                  income={item.income}
-                  expense={item.expense}
-                  savings={item.savings}
-                  docId={item.docId}
-                />
-              </tr>
-            ))
-          ) : (
-            <p>No hay transacciones</p>
-          )}
-        </tbody>
-      </BodyTable>
-    </ContainerTable>
+      <ContainerTable row={row}>
+        <BodyTable>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Descripción</th>
+              <th>Ingreso</th>
+              <th>Egreso</th>
+              <th>Ahorro</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {arrayTransactions ? (
+              arrayTransactions.map((item) => (
+                <tr key={item.docId}>
+                  <RowTable
+                    date={item.date}
+                    description={item.description}
+                    income={item.income}
+                    expense={item.expense}
+                    savings={item.savings}
+                    docId={item.docId}
+                  />
+                </tr>
+              ))
+            ) : (
+              <p>No hay transacciones</p>
+            )}
+          </tbody>
+        </BodyTable>
+      </ContainerTable>
+    </Container>
   )
 }
 
 export default Table
 
+const Container = styled.div`
+  padding-right: 1rem;
+`
 const ContainerTable = styled.div`
   background-color: ${(props) => props.theme.white};
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 0 0 16px 16px;
   grid-column: 2;
   grid-row: ${(props) => props.row};
-  box-shadow: #00000021 0px 1px 9px 0px;
   overflow-y: scroll;
+  padding: 0.5rem 1.5rem;
+  border-top: 0;
+  border-left: 2px;
+  border-right: 2px;
+  border-bottom: 2px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.black_400};
   &::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
     height: 5px;
@@ -58,7 +68,7 @@ const ContainerTable = styled.div`
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${(props) =>
-      props.theme.xLightBlue}; /* color of the scroll thumb */
+      props.theme.black_500}; /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
   }
   @media screen and (max-width: 1140px) {
@@ -72,10 +82,11 @@ const ContainerTable = styled.div`
   }
 `
 const TitleTable = styled.header`
-  color: ${(props) => props.theme.darkBlue};
-  padding: 0;
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.black_500};
+  padding: 1rem 1.5rem;
+  border-radius: 16px 16px 0 0;
   font-size: ${(props) => props.theme.mFont};
-  margin-bottom: 1rem;
 `
 const BodyTable = styled.table`
   width: 100%;
@@ -83,7 +94,7 @@ const BodyTable = styled.table`
     padding-bottom: 1rem;
     text-transform: uppercase;
     font-size: ${(props) => props.theme.xsFont};
-    color: ${(props) => props.theme.gray};
+    color: ${(props) => props.theme.black_400};
   }
   tr {
     display: grid;
@@ -94,13 +105,16 @@ const BodyTable = styled.table`
         1fr
       )
       minmax(80px, 1fr);
-    border-bottom: 2px solid ${(props) => props.theme.xLightBlue};
+    border-bottom: 2px solid ${(props) => props.theme.black_300};
     align-items: center;
     text-transform: capitalize;
     gap: 0.5rem;
     td {
-      padding: 0.5rem 0.25rem;
+      padding: 0.5rem 0;
     }
+  }
+  tbody tr:last-child {
+    border-bottom: none;
   }
   @media screen and (max-width: 768px) {
     th:first-child,

@@ -39,7 +39,6 @@ function Menu({ row, activeMenu, setActiveMenu }) {
             className='uil uil-times'
           />
         </Header>
-        <Line />
         <MenuRoutes>
           {menuItems.map((item, index) => (
             <LinlStyle key={index} to={item.link}>
@@ -63,21 +62,19 @@ const Container = styled.aside`
   justify-content: space-between;
   grid-row: ${(props) => props.row};
   align-items: center;
-  background-color: ${(props) => props.theme.darkLightBlue};
-  border-radius: 12px;
+  background-color: ${(props) => props.theme.black_200};
   padding: 1.5rem 1rem;
-  box-shadow: #00000021 0px 1px 9px 0px;
   img {
     width: 15rem;
   }
 
   @media screen and (max-width: 1140px) {
     transform: ${(props) =>
-      props.activeMenu ? 'translateX(0)' : 'translateX(-130%)'};
+      props.activeMenu ? 'translateX(0)' : 'translateX(-100%)'};
     position: fixed;
-    height: calc(100vh - 96px);
-    left: 3rem;
-    top: 48px;
+    height: 100vh;
+    left: 0;
+    top: 0;
     z-index: 100;
     transition: transform 0.5s ease-in-out;
   }
@@ -97,6 +94,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 2rem;
   @media screen and (max-width: 1140px) {
     justify-content: space-between;
   }
@@ -112,12 +110,13 @@ const Item = styled.li`
   width: 100%;
   font-size: ${(props) => props.theme.mFont};
   padding: 0.75rem 1rem;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => (props.active ? 'white' : '#14121F')};
   border-radius: 12px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? '#0033bb' : 'none')};
+  background-color: ${(props) => (props.active ? '#14121F' : 'none')};
   &:hover {
-    background-color: ${(props) => props.theme.lightBlue};
+    color: ${(props) => props.theme.black_500};
+    background-color: ${(props) => props.theme.black_400};
   }
 `
 const LinlStyle = styled(Link)`
@@ -126,7 +125,7 @@ const LinlStyle = styled(Link)`
 `
 const IconClose = styled.i`
   display: none;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   font-size: 2rem;
   cursor: pointer;
   @media screen and (max-width: 1140px) {

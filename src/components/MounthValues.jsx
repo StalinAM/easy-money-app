@@ -35,25 +35,21 @@ function MounthValues() {
   return (
     <ContainerTotal>
       <TotalInfo
-        color='#000e33'
         icon='stack'
         title='Saldo'
         value={total.toFixed(2)}
       />
       <TotalInfo
-        color='#4CAF50'
         icon='withdraw'
         title='Ingresos'
         value={incomes.toFixed(2)}
       />
       <TotalInfo
-        color='#F44334'
         icon='insert'
         title='Gastos'
         value={expenses.toFixed(2)}
       />
       <TotalInfo
-        color='#004CDF'
         icon='insert'
         title='Ahorros'
         value={savings.toFixed(2)}
@@ -66,6 +62,7 @@ export default MounthValues
 
 const ContainerTotal = styled.div`
   padding-top: 2.9rem;
+  padding-right: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2rem;

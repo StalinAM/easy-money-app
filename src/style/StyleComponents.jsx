@@ -20,7 +20,6 @@ export const LabelInput = styled.label`
 export const Line = styled.hr`
   border: none;
   margin: 1rem 0;
-  border-top: 2px solid ${(props) => props.theme.white};
+  border-top: 4px solid ${(props) => props.theme.black_300};
   width: 100%;
 `
-

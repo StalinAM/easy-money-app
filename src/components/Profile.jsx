@@ -46,17 +46,15 @@ const Navbar = styled.nav`
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
-  padding: 0 1rem;
-  background-color: ${(props) => props.theme.darkLightBlue};
+  padding: 1.5rem 1rem 1.5rem 0;
   border-radius: 12px;
-  box-shadow: #00000021 0px 1px 9px 0px;
   div {
     display: flex;
     align-items: center;
   }
   h2 {
     text-transform: capitalize;
-    color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.black};
     margin-right: 1rem;
   }
   @media screen and (max-width: 1140px) {
@@ -67,7 +65,7 @@ const Navbar = styled.nav`
 const IconOpen = styled.i`
   display: none;
   cursor: pointer;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   font-size: ${(props) => props.theme.xlFont};
   @media screen and (max-width: 1140px) {
     display: block;
