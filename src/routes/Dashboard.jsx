@@ -37,12 +37,10 @@ const Container = styled.main`
   width: 100%;
   height: 100vh;
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 1fr 1fr 1fr;
   position: relative;
-  @media screen and (max-width: 1440px) {
-  }
   @media screen and (max-width: 1140px) {
     padding-left: 1rem;
     grid-template-columns: 1fr;
