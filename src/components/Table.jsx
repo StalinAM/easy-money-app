@@ -5,7 +5,7 @@ function Table({ row, title, arrayTransactions }) {
   return (
     <Container row={row}>
       <TitleTable>{title}</TitleTable>
-      <ContainerTable>
+      <ContainerTable title={title}>
         <BodyTable>
           <thead>
             <tr>
@@ -47,13 +47,17 @@ const Container = styled.div`
   grid-row: ${(props) => props.row};
   padding-right: 1rem;
   grid-column: 2;
+  overflow: hidden;
   @media screen and (max-width: 1140px) {
     grid-column: 1;
     overflow-x: scroll;
   }
 `
 const ContainerTable = styled.div`
-  height: calc(100% - 83px);
+  height: ${(props) =>
+    props.title !== 'Transacciones'
+      ? 'calc(100% - 83px)'
+      : 'calc(100% - 68px)'};
   overflow-y: scroll;
   background-color: ${(props) => props.theme.white};
   border-radius: 0 0 16px 16px;
