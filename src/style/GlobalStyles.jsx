@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import background from '../assets/background.svg'
 const GlobalStyles = createGlobalStyle`
     *,*::before,*::after{
         box-sizing: border-box;
@@ -20,12 +19,17 @@ const GlobalStyles = createGlobalStyle`
         } */
     }
     header{
-        padding: 3rem 4rem;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 10;
+        padding: 1rem 4rem;
+        box-shadow: #00000021 0px 1px 9px 0px;
         @media screen and (max-width: 768px) {
-            padding: 3rem 1.5rem;
+            padding: 1rem;
         }
         @media screen and (max-width: 480px) {
-            padding: 1rem 1rem 1.5rem;
+            padding: 1rem;
         }
     }
     article{
@@ -69,7 +73,7 @@ const GlobalStyles = createGlobalStyle`
         background: none;        /* color of the tracking area */
     }
     body::-webkit-scrollbar-thumb {
-        background-color: white;    /* color of the scroll thumb */
+        background-color: #14121F;    /* color of the scroll thumb */
         border-radius: 20px;       /* roundness of the scroll thumb */
     }
 `
