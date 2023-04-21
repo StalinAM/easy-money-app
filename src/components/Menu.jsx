@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
 import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
-import { Line } from '../style/StyleComponents'
 function Menu({ row, activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
   const location = useLocation()
