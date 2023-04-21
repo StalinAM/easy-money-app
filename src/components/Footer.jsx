@@ -23,7 +23,7 @@ const Container = styled.footer`
   justify-content: center;
   padding: 3rem 6rem;
   gap: 1rem;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   img {
     width: 5rem;
   }
@@ -38,6 +38,6 @@ const Container = styled.footer`
 const Creator = styled.a`
   font-weight: bold;
   &:hover {
-    color: ${(props) => props.theme.lightBlue};
+    text-decoration: underline;
   }
 `
