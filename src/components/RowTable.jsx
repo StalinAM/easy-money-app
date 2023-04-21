@@ -82,6 +82,7 @@ const Icon = styled.button`
   i {
     margin-right: 0.5rem;
     font-size: ${(props) => props.theme.mFont};
+    color: ${(props) => props.theme.black_500};
     cursor: pointer;
     &:hover {
       color: red;
