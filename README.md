@@ -20,12 +20,14 @@ App web de finanzas personales, diseñada para simplificar la gestión del diner
 
 ### Características
 
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode _(optional)_
+La aplicación web de finanzas personales ofrece una amplia variedad de funciones para ayudarte a gestionar tus finanzas de manera eficiente. A continuación, se detallan las principales características de la aplicación:
+
+- Registro de usuario: La aplicación te permite registrarte fácilmente a través de correo electrónico y próximamente también podrás hacerlo mediante Google, Microsoft y GitHub.
+- Creación de transacciones: En el apartado de tablas podrás registrar tus transacciones y llevar un control detallado de tus gastos e ingresos.
+- Resumen financiero: La aplicación muestra un resumen visual de tu situación financiera actual, con información relevante sobre tu saldo total, ingresos, gastos y ahorros.
+- Detalles de transacciones: Puedes ver los detalles de cada transacción, incluyendo la fecha, descripción y el monto de la misma.
+- Edición y eliminación de transacciones: La aplicación te permite editar o eliminar las transacciones de los últimos meses, lo que te permite mantener tus registros precisos y actualizados.
+- Visualización por paginación: Puedes visualizar tus transacciones mediante la paginación por mes, lo que te permite tener una visión general de tus finanzas durante un periodo determinado.
 
 ### Links
 
