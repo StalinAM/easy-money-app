@@ -33,7 +33,7 @@ function Menu({ row, activeMenu, setActiveMenu }) {
     <Container activeMenu={activeMenu} row={row}>
       <div>
         <Header>
-          <img src={logo} alt='logo of easymoney' />
+          <h1>EasyMoney</h1>
           <IconClose
             onClick={() => setActiveMenu(false)}
             className='uil uil-times'
@@ -68,7 +68,9 @@ const Container = styled.aside`
   img {
     width: 15rem;
   }
-
+  div {
+    width: 100%;
+  }
   @media screen and (max-width: 1140px) {
     transform: ${(props) =>
       props.activeMenu ? 'translateX(0)' : 'translateX(-100%)'};
@@ -86,9 +88,13 @@ const Container = styled.aside`
 `
 const Header = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  h1 {
+    font-size: ${(props) => props.theme.xlFont};
+  }
   @media screen and (max-width: 1140px) {
     justify-content: space-between;
   }
