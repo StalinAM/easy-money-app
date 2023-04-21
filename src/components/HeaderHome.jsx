@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg'
 function HeaderHome() {
   const [active, setActive] = useState(false)
   return (
-    <header>
+    <Container>
       <Navbar>
         <h1>EasyMoney</h1>
         <IconOpen onClick={() => setActive(true)} className='uil uil-bars' />
@@ -22,12 +22,22 @@ function HeaderHome() {
           </Item>
         </List>
       </Navbar>
-    </header>
+    </Container>
   )
 }
 
 export default HeaderHome
-
+const Container = styled.header`
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  padding: 1rem 4rem;
+  box-shadow: #00000021 0px 1px 9px 0px;
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+`
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
