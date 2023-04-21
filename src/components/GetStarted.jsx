@@ -27,13 +27,13 @@ const SectionC = styled.section`
   display: flex;
   align-items: center;
   @media screen and (max-width: 1080px) {
-    padding: 3rem 3rem 2rem;
+    padding: 3rem;
   }
   @media screen and (max-width: 768px) {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 1.5rem;
   }
   @media screen and (max-width: 480px) {
-    padding: 1rem 1rem 2rem;
+    padding: 1rem;
   }
 `
 const Container = styled.article`
@@ -45,7 +45,6 @@ const Container = styled.article`
   img {
     max-width: 40rem;
     border-radius: 12px;
-    box-shadow: #00000021 0px 1px 9px 0px;
   }
 `
 const Title = styled.h2`
@@ -54,7 +53,7 @@ const Title = styled.h2`
   align-items: center;
   font-size: ${(props) => props.theme.xxlFont};
   font-weight: bold;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   text-align: center;
   span {
     font-size: ${(props) => props.theme.lFont};
