@@ -7,7 +7,7 @@ function HeaderHome() {
   return (
     <header>
       <Navbar>
-        <Logo src={logo} alt='logo of easymoney' />
+        <h1>EasyMoney</h1>
         <IconOpen onClick={() => setActive(true)} className='uil uil-bars' />
         <List active={active}>
           <IconClose
@@ -34,9 +34,11 @@ const Navbar = styled.nav`
   align-items: center;
   margin: 0 auto;
   max-width: 75rem;
-`
-const Logo = styled.img`
-  width: 13rem;
+
+  h1 {
+    font-size: ${(props) => props.theme.xlFont};
+    font-weight: bold;
+  }
 `
 const List = styled.ul`
   position: relative;
@@ -52,7 +54,7 @@ const List = styled.ul`
     top: 0;
     z-index: 100;
     transition: transform 0.5s ease-in-out;
-    background-color: ${(props) => props.theme.lightBlue};
+    background-color: ${(props) => props.theme.black_200};
     flex-direction: column;
     justify-content: center;
     width: min(75vw, 300px);
@@ -62,13 +64,14 @@ const Item = styled.li`
   cursor: pointer;
   position: relative;
   font-size: ${(props) => props.theme.mFont};
-  color: ${(props) => props.theme.white};
+  font-weight: bold;
+  color: ${(props) => props.theme.black_500};
   &::before {
     content: '';
     position: absolute;
     height: 3px;
-    background-color: ${(props) => props.theme.white};
-    bottom: -10px;
+    background-color: ${(props) => props.theme.black_500};
+    bottom: -6px;
     transition: 0.3s;
     width: 0%;
   }
@@ -78,7 +81,7 @@ const Item = styled.li`
 `
 const IconClose = styled.i`
   display: none;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   font-size: 3rem;
   cursor: pointer;
   @media screen and (max-width: 780px) {
@@ -87,11 +90,15 @@ const IconClose = styled.i`
     top: 2.5rem;
     right: 1rem;
   }
+  @media screen and (max-width: 480px) {
+    top: 0.5rem;
+    right: 0.6rem;
+  }
 `
 const IconOpen = styled.i`
   display: none;
   cursor: pointer;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black_500};
   font-size: ${(props) => props.theme.xlFont};
   @media screen and (max-width: 768px) {
     display: block;
