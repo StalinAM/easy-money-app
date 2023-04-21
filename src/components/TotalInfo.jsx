@@ -14,6 +14,9 @@ function TotalInfo({ color, icon, title, value }) {
 export default TotalInfo
 
 const Container = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   width: 100%;
   background-color: ${(props) => props.theme.white};
