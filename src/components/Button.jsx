@@ -21,7 +21,7 @@ const Btn = styled(Link)`
   transition: all 0.3s ease;
   &:hover {
     background: none;
-    box-shadow: inset 0 0 0 4px ${(props) => props.theme.black_500};
+    box-shadow: inset 0 0 0 3px ${(props) => props.theme.black_500};
     color: ${(props) => props.theme.black_500};
   }
   @media screen and (max-width: 768px) {
