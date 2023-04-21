@@ -1,12 +1,6 @@
 export const dark = {
   // Colors
   white: '#ffffff',
-  blue: '#0066FF',
-  darkLightBlue: '#004CDF',
-  lightBlue: '#0033bb',
-  darkBlue: '#000e33',
-  xLightBlue: '#85C8FD',
-  gray: '#A0A8AF',
   // Font size
   numSize: '4rem',
   xxlFont: '3rem',
