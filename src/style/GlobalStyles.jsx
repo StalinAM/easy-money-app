@@ -18,20 +18,6 @@ const GlobalStyles = createGlobalStyle`
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         } */
     }
-    header{
-        position: sticky;
-        top: 0;
-        background-color: white;
-        z-index: 10;
-        padding: 1rem 4rem;
-        box-shadow: #00000021 0px 1px 9px 0px;
-        @media screen and (max-width: 768px) {
-            padding: 1rem;
-        }
-        @media screen and (max-width: 480px) {
-            padding: 1rem;
-        }
-    }
     article{
         max-width: 75rem;
         margin: 0 auto;
