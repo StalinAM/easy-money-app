@@ -78,7 +78,8 @@ const Container = styled.main`
   align-items: center;
 `
 const Content = styled.div`
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.black_200};
+  border: 2px solid ${(props) => props.theme.black_500};
   position: relative;
   border-radius: 30px;
   width: 425px;
@@ -91,7 +92,7 @@ const Content = styled.div`
 const Header = styled.header`
   position: absolute;
   width: 75%;
-  background-color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.black_500};
   margin: auto;
   padding: 1rem 0;
   border-radius: 30px;
@@ -129,10 +130,12 @@ const SubmitBtn = styled.button`
   border-radius: 12px;
   color: ${(props) => props.theme.white};
   font-weight: 700;
-  background-color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.black_500};
   font-size: ${(props) => props.theme.mFont};
   &:hover {
-    background-color: ${(props) => props.theme.lightBlue};
+    background: none;
+    box-shadow: inset 0 0 0 4px ${(props) => props.theme.black_500};
+    color: ${(props) => props.theme.black_500};
   }
 `
 const Login = styled.p`
@@ -141,11 +144,10 @@ const Login = styled.p`
   color: ${(props) => props.theme.gray};
   a {
     font-weight: 700;
-    color: ${(props) => props.theme.blue};
+    color: ${(props) => props.theme.black_500};
     position: relative;
-
     &:hover {
-      color: ${(props) => props.theme.lightBlue};
+      text-decoration: underline;
     }
   }
 `
