@@ -5,6 +5,23 @@ import { TransactionContext } from '../context/TransactionsContext'
 import FormTransaction from './FormTransaction'
 
 function Transactions({ active, setActive }) {
+  const newDate = () => {
+    const fecha = new Date()
+    const opciones = {
+      timeZone: 'America/Guayaquil',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }
+    const fechaString =
+      fecha
+        .toLocaleDateString('es-EC', opciones)
+        .replace(/\//g, '-')
+        .split('-')
+        .reverse()
+        .join('-') + 'T00:00:00Z'
+    return fechaString
+  }
   const { currentUser } = useContext(AuthContext)
   const { returnTransactions } = useContext(TransactionContext)
   const [transaction, setTransaction] = useState({
@@ -21,7 +38,7 @@ function Transactions({ active, setActive }) {
     ) {
       const newTransaction = {
         uid: currentUser.uid,
-        date: new Date().toISOString(),
+        date: newDate(),
         ...transaction
       }
       await insertNewTransaction({ ...newTransaction })

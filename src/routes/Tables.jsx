@@ -11,7 +11,6 @@ function Tables({ arrayTransactions }) {
   const groups = groupTransactionsByMonth(arrayTransactions)
   const months = Object.keys(groups)
   const [currentMonthIndex, setCurrentMonthIndex] = useState(0)
-
   function goToPreviousMonth() {
     setCurrentMonthIndex(Math.max(currentMonthIndex - 1, 0))
   }
