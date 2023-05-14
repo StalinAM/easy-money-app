@@ -16,6 +16,23 @@ function RowTable({ date, description, income, expense, savings, docId }) {
     income,
     savings
   })
+  const newDate = () => {
+    const fecha = new Date()
+    const opciones = {
+      timeZone: 'America/Guayaquil',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }
+    const fechaString =
+      fecha
+        .toLocaleDateString('es-EC', opciones)
+        .replace(/\//g, '-')
+        .split('-')
+        .reverse()
+        .join('-') + 'T00:00:00Z'
+    return fechaString
+  }
   const editTransaction = async () => {
     if (
       transaction.description &&
@@ -23,7 +40,7 @@ function RowTable({ date, description, income, expense, savings, docId }) {
     ) {
       const newTransaction = {
         uid: currentUser.uid,
-        date: new Date().toISOString(),
+        date: newDate(),
         ...transaction
       }
       await updateTransaction(docId, { ...newTransaction })
