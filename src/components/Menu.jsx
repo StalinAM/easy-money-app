@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
-function Menu({ row, activeMenu, setActiveMenu }) {
+function Menu({ activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
   const location = useLocation()
   const handleClick = () => {
@@ -12,23 +12,27 @@ function Menu({ row, activeMenu, setActiveMenu }) {
   const menuItems = [
     {
       title: 'Resumen',
-      link: '/dashboard'
+      link: 'overview'
     },
     {
       title: 'Tablas',
-      link: '/tables'
-    }
+      link: 'tables'
+    },
+    { title: 'Filtro', link: 'filter' }
   ]
   useEffect(() => {
     const path = location.pathname
-    const index = menuItems.findIndex((item) => item.link === path)
+    const index = menuItems.findIndex(
+      (item) => item.link === path.split('/')[2]
+    )
     setActive(index)
   }, [location.pathname])
   const handleItemClick = (index) => {
     setActive(index)
+    setActiveMenu(false)
   }
   return (
-    <Container activeMenu={activeMenu} row={row}>
+    <Container activeMenu={activeMenu}>
       <div>
         <Header>
           <h1>EasyMoney</h1>
@@ -40,7 +44,10 @@ function Menu({ row, activeMenu, setActiveMenu }) {
         <MenuRoutes>
           {menuItems.map((item, index) => (
             <LinlStyle key={index} to={item.link}>
-              <Item active={active === index} onClick={handleItemClick}>
+              <Item
+                active={active === index}
+                onClick={() => handleItemClick(index)}
+              >
                 {item.title}
               </Item>
             </LinlStyle>
@@ -58,8 +65,6 @@ const Container = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  grid-row: ${(props) => props.row};
-  align-items: center;
   background-color: ${(props) => props.theme.black_200};
   padding: 1.5rem 1rem;
   height: 100%;
@@ -76,7 +81,6 @@ const Container = styled.aside`
     left: 0;
     top: 0;
     z-index: 100;
-    transition: transform 0.5s ease-in-out;
   }
   @media screen and (max-width: 768px) {
     img {
@@ -107,7 +111,7 @@ const MenuRoutes = styled.ul`
 const Item = styled.li`
   width: 100%;
   font-size: ${(props) => props.theme.mFont};
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   color: ${(props) => (props.active ? 'white' : '#14121F')};
   border-radius: 12px;
   cursor: pointer;
