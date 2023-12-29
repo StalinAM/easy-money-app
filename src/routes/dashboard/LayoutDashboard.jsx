@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Menu from '../../components/Menu'
 import styled from 'styled-components'
