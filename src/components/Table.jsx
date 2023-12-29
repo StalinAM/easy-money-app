@@ -45,7 +45,6 @@ export default Table
 
 const Container = styled.div`
   grid-row: ${(props) => props.row};
-  padding-right: 1rem;
   grid-column: 2;
   overflow: hidden;
   @media screen and (max-width: 1140px) {
