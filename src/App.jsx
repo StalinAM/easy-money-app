@@ -10,7 +10,7 @@ import SignIn from './routes/SignIn'
 import SignUp from './routes/SignUp'
 import { AuthContext } from './context/Auth'
 import { TransactionContext } from './context/TransactionsContext'
-import Filter from './routes/Filter'
+import Filter from './routes/dashboard/DashboardFilter'
 import Dashboard from './routes/dashboard/Dashboard'
 import LayoutDashboard from './routes/dashboard/LayoutDashboard'
 
@@ -81,6 +81,15 @@ function App() {
               path='overview'
               element={
                 <Dashboard
+                  setActiveMenu={setActiveMenu}
+                  arrayTransactions={sortArray}
+                />
+              }
+            />
+            <Route
+              path='filter'
+              element={
+                <Filter
                   setActiveMenu={setActiveMenu}
                   arrayTransactions={sortArray}
                 />
