@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import '@fontsource-variable/nunito'
 const GlobalStyles = createGlobalStyle`
     *,*::before,*::after{
         box-sizing: border-box;
