@@ -31,7 +31,7 @@ export const Container = styled.article`
   img {
     max-width: 30rem;
     border-radius: 12px;
-    border: 2px solid ${props=>props.theme.black_500};
+    border: 2px solid ${(props) => props.theme.black_500};
     @media screen and (max-width: 768px) {
       max-width: 100%;
     }
@@ -50,5 +50,17 @@ export const Content = styled.div`
     font-size: ${(props) => props.theme.mFont};
     color: ${(props) => props.theme.black_500};
     font-weight: 300;
+  }
+`
+export const BtnOpen = styled.button`
+  display: none;
+
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  @media screen and (max-width: 1140px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `

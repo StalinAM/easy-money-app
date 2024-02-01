@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { AuthContext } from '../context/Auth'
+import { burgerIcon } from '../assets/icons/list-icons'
+import { BtnOpen } from '../style/StyleComponents'
 
 function Profile({ setActiveMenu }) {
   const { currentUser } = useContext(AuthContext)
 
   return (
     <Navbar>
-      <IconOpen onClick={() => setActiveMenu(true)} className='uil uil-bars' />
+      <BtnOpen onClick={() => setActiveMenu(true)}>{burgerIcon}</BtnOpen>
       <div>
         <h2>{currentUser.displayName}</h2>
         {/* <ImgProfile>
@@ -59,14 +61,5 @@ const Navbar = styled.nav`
   @media screen and (max-width: 1140px) {
     grid-column: auto;
     justify-content: space-between;
-  }
-`
-const IconOpen = styled.i`
-  display: none;
-  cursor: pointer;
-  color: ${(props) => props.theme.black_500};
-  font-size: ${(props) => props.theme.xlFont};
-  @media screen and (max-width: 1140px) {
-    display: block;
   }
 `
