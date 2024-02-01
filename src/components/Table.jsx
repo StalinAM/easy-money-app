@@ -32,7 +32,9 @@ function Table({ row, title, arrayTransactions }) {
                 </tr>
               ))
             ) : (
-              <p>No hay transacciones</p>
+              <tr>
+                <td>No hay transacciones</td>
+              </tr>
             )}
           </tbody>
         </BodyTable>
