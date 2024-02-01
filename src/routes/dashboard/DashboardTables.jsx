@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Table from '../../components/Table'
 import Transactions from '../../components/Transactions'
+import { arrowIcon } from '../../assets/icons/list-icons'
 import { groupTransactionsByMonth } from '../../components/groupsFunction'
+import { BtnOpen } from '../../style/StyleComponents'
+import { burgerIcon } from '../../assets/icons/list-icons'
 
 function DashboardTables({ arrayTransactions, setActiveMenu }) {
   const [active, setActive] = useState(false)
@@ -22,10 +25,7 @@ function DashboardTables({ arrayTransactions, setActiveMenu }) {
   return (
     <Container>
       <ContainerBtn>
-        <IconOpen
-          onClick={() => setActiveMenu(true)}
-          className='uil uil-bars'
-        />
+        <BtnOpen onClick={() => setActiveMenu(true)}>{burgerIcon}</BtnOpen>
         <h2>{currentMonth}</h2>
         <BtnModal onClick={() => setActive(!active)}>Crear nueva</BtnModal>
       </ContainerBtn>
@@ -39,15 +39,15 @@ function DashboardTables({ arrayTransactions, setActiveMenu }) {
         <Pagination>
           <div>
             {currentMonthIndex != months.length - 1 && (
-              <BtnPage onClick={goToNextMonth}>
-                <i className='uil uil-angle-left' />
+              <BtnPage position='right' onClick={goToNextMonth}>
+                {arrowIcon}
               </BtnPage>
             )}
           </div>
           <div>
             {currentMonthIndex != 0 && (
-              <BtnPage onClick={goToPreviousMonth}>
-                <i className='uil uil-angle-right' />
+              <BtnPage position='left' onClick={goToPreviousMonth}>
+                {arrowIcon}
               </BtnPage>
             )}
           </div>
@@ -61,7 +61,7 @@ export default DashboardTables
 
 const Container = styled.section`
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -71,7 +71,6 @@ const Container = styled.section`
     padding-left: 1rem;
   }
   @media screen and (max-width: 768px) {
-    height: auto;
   }
 `
 const Separator = styled.div`
@@ -116,22 +115,24 @@ const Pagination = styled.div`
   }
 `
 const BtnPage = styled.button`
-  width: 40px;
-  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
   background-color: ${(props) => props.theme.black_500};
-  i {
-    color: ${(props) => props.theme.white};
-    font-size: ${(props) => props.theme.lFont};
+  font-size: ${(props) => props.theme.lFont};
+  color: ${(props) => props.theme.white};
+  &:hover {
+    border: 3px solid ${(props) => props.theme.black_500};
+    color: ${(props) => props.theme.black_500};
+    background-color: transparent;
   }
-`
-const IconOpen = styled.i`
-  display: none;
-  cursor: pointer;
-  color: ${(props) => props.theme.black_500};
-  font-size: ${(props) => props.theme.xlFont};
-  @media screen and (max-width: 1140px) {
-    display: block;
+  svg {
+    transform: ${(props) =>
+      props.position === 'left' ? 'rotateY(180deg)' : ''};
   }
 `
