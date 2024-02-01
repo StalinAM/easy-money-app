@@ -41,7 +41,7 @@ export const registerUser = async (
 export const loginUser = async (email, password, navigate, setError) => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
-    navigate('/dashboard')
+    navigate('/dashboard/overview')
   } catch (error) {
     const errorCode = error.code
     if (errorCode === 'auth/wrong-password') {
