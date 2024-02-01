@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import Button from '../components/Button'
 import { logoutUser } from '../firebase/services'
 function Menu({ activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
@@ -54,7 +53,9 @@ function Menu({ activeMenu, setActiveMenu }) {
           ))}
         </MenuRoutes>
       </div>
-      <Button handleClick={handleClick} text='Cerrar sessión' link='/signin' />
+      <Button onClick={handleClick} to='/signin'>
+        Cerrar sessión
+      </Button>
     </Container>
   )
 }
@@ -132,5 +133,25 @@ const IconClose = styled.i`
   cursor: pointer;
   @media screen and (max-width: 1140px) {
     display: block;
+  }
+`
+const Button = styled(Link)`
+  padding: 0.56rem 2rem;
+  border-radius: 12px;
+  font-size: ${(props) => props.theme.mFont};
+  background-color: ${(props) => props.theme.black_500};
+  color: ${(props) => props.theme.white};
+  transition: all 0.3s ease;
+  text-align: center;
+  &:hover {
+    background: none;
+    box-shadow: inset 0 0 0 3px ${(props) => props.theme.black_500};
+    color: ${(props) => props.theme.black_500};
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0.56rem 2rem;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0.56rem 1.5rem;
   }
 `
