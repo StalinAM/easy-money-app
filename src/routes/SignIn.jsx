@@ -69,6 +69,15 @@ function SignIn() {
           </SignUp>
         </FormC>
       </Content>
+      <Demo>
+        <span>Demo: </span>
+        <span>
+          <strong>correo: </strong>stalin@hotmail.com
+        </span>
+        <span>
+          <strong>contraseña: </strong>stalin
+        </span>
+      </Demo>
     </Container>
   )
 }
@@ -77,6 +86,8 @@ export default SignIn
 
 const Container = styled.main`
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
   min-height: 100vh;
   align-items: center;
@@ -187,4 +198,10 @@ const ErrorMessage = styled.span`
   @media screen and (max-width: 480px) {
     font-size: 0.875rem;
   }
+`
+const Demo = styled.p`
+  display: flex;
+  gap: 8px;
+  color: ${(props) => props.theme.black_400};
+  font-weight: 400;
 `
