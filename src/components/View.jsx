@@ -1,5 +1,4 @@
-import React from 'react'
-import table from '../../assets/tables.webp'
+import table from '../assets/tables.webp'
 import { Container, Content } from '../style/StyleComponents'
 function View() {
   return (
