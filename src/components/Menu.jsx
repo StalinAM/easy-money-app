@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { logoutUser } from '../firebase/services'
+import { closeIcon } from '../assets/icons/list-icons'
 function Menu({ activeMenu, setActiveMenu }) {
   const [active, setActive] = useState(0)
   const location = useLocation()
@@ -35,10 +36,9 @@ function Menu({ activeMenu, setActiveMenu }) {
       <div>
         <Header>
           <h1>EasyMoney</h1>
-          <IconClose
-            onClick={() => setActiveMenu(false)}
-            className='uil uil-times'
-          />
+          <IconClose onClick={() => setActiveMenu(false)}>
+            {closeIcon}
+          </IconClose>
         </Header>
         <MenuRoutes>
           {menuItems.map((item, index) => (
@@ -126,7 +126,7 @@ const LinlStyle = styled(Link)`
   display: block;
   width: 100%;
 `
-const IconClose = styled.i`
+const IconClose = styled.button`
   display: none;
   color: ${(props) => props.theme.black_500};
   font-size: 2rem;

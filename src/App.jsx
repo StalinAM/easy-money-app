@@ -31,7 +31,7 @@ function App() {
   }
   const ProtectLogin = ({ children }) => {
     if (currentUser) {
-      return <Navigate to='/dashboard' />
+      return <Navigate to='/dashboard/overview' />
     }
     return children
   }
