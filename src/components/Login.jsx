@@ -1,6 +1,6 @@
 import React from 'react'
 import loginImg from '../../assets/login.webp'
-import { Container, Content } from '../../style/StyleComponents'
+import { Container, Content } from '../style/StyleComponents'
 
 function Login() {
   return (
