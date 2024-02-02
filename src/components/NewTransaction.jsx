@@ -1,5 +1,5 @@
 import React from 'react'
-import newtransactionImg from '../../assets/form.webp'
+import newtransactionImg from '../assets/form.webp'
 import { Container, Content } from '../style/StyleComponents'
 
 function NewTransaction() {
