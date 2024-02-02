@@ -35,8 +35,8 @@ export const closeIcon = (
 )
 export const arrowIcon = (
   <svg
-    width='90'
-    height='90'
+    width='30'
+    height='30'
     viewBox='0 0 24 24'
     strokeWidth='2'
     stroke='currentColor'
