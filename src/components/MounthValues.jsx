@@ -2,6 +2,12 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { TransactionContext } from '../context/TransactionsContext'
 import TotalInfo from './TotalInfo'
+import {
+  expensesIcon,
+  incomesIcon,
+  savingsIcon,
+  totalIcon
+} from '../assets/icons/list-icons'
 
 function MounthValues() {
   const { arrayTransactions } = useContext(TransactionContext)
@@ -34,26 +40,18 @@ function MounthValues() {
   const total = incomes - expenses
   return (
     <ContainerTotal>
-      <TotalInfo
-        icon='stack'
-        title='Saldo'
-        value={total.toFixed(2)}
-      />
-      <TotalInfo
-        icon='withdraw'
-        title='Ingresos'
-        value={incomes.toFixed(2)}
-      />
-      <TotalInfo
-        icon='insert'
-        title='Gastos'
-        value={expenses.toFixed(2)}
-      />
-      <TotalInfo
-        icon='insert'
-        title='Ahorros'
-        value={savings.toFixed(2)}
-      />
+      <TotalInfo title='Saldo' value={total.toFixed(2)}>
+        {totalIcon}
+      </TotalInfo>
+      <TotalInfo title='Ingresos' value={incomes.toFixed(2)}>
+        {incomesIcon}
+      </TotalInfo>
+      <TotalInfo title='Gastos' value={expenses.toFixed(2)}>
+        {expensesIcon}
+      </TotalInfo>
+      <TotalInfo title='Ahorros' value={savings.toFixed(2)}>
+        {savingsIcon}
+      </TotalInfo>
     </ContainerTotal>
   )
 }
