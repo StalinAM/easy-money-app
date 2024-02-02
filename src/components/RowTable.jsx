@@ -9,6 +9,7 @@ function RowTable({ date, description, income, expense, savings, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
   const [active, setActive] = useState(false)
   const currentMonth = new Date().getMonth() + 1
+  const currentYear = new Date().getFullYear()
   const { currentUser } = useContext(AuthContext)
   const [transaction, setTransaction] = useState({
     description,
@@ -68,16 +69,17 @@ function RowTable({ date, description, income, expense, savings, docId }) {
           : ''}
       </td>
 
-      {currentMonth === new Date(date).getMonth() + 1 && (
-        <td>
-          <Icon onClick={() => setActive(!active)}>
-            <i className='uil uil-pen' />
-          </Icon>
-          <Icon onClick={removeTransaction}>
-            <i className='uil uil-trash-alt' />
-          </Icon>
-        </td>
-      )}
+      {currentMonth === new Date(date).getMonth() + 1 &&
+        currentYear === new Date(date).getFullYear() && (
+          <td>
+            <Icon onClick={() => setActive(!active)}>
+              <i className='uil uil-pen' />
+            </Icon>
+            <Icon onClick={removeTransaction}>
+              <i className='uil uil-trash-alt' />
+            </Icon>
+          </td>
+        )}
 
       {active && (
         <FormTransaction
