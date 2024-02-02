@@ -31,7 +31,7 @@ export const registerUser = async (
     await updateProfile(userCredential.user, {
       displayName: name
     })
-    navigate('/dashboard')
+    navigate('/dashboard/overview')
   } catch (error) {
     if (error.code === 'auth/email-already-in-use')
       setError('El correo electrónico ya está registrado.')
