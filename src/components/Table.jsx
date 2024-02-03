@@ -51,7 +51,6 @@ const Container = styled.div`
   overflow: hidden;
   @media screen and (max-width: 1140px) {
     grid-column: 1;
-    overflow-x: scroll;
   }
 `
 const ContainerTable = styled.div`
