@@ -4,6 +4,7 @@ import { AuthContext } from '../context/Auth'
 import { TransactionContext } from '../context/TransactionsContext'
 import { deleteTransaction, updateTransaction } from '../firebase/services'
 import FormTransaction from './FormTransaction'
+import { deleteIcon, editIcon } from '../assets/icons/list-icons'
 
 function RowTable({ date, description, income, expense, savings, docId }) {
   const { returnTransactions } = useContext(TransactionContext)
@@ -71,14 +72,10 @@ function RowTable({ date, description, income, expense, savings, docId }) {
 
       {currentMonth === new Date(date).getMonth() + 1 &&
         currentYear === new Date(date).getFullYear() && (
-          <td>
-            <Icon onClick={() => setActive(!active)}>
-              <i className='uil uil-pen' />
-            </Icon>
-            <Icon onClick={removeTransaction}>
-              <i className='uil uil-trash-alt' />
-            </Icon>
-          </td>
+          <Edit>
+            <Icon onClick={() => setActive(!active)}>{editIcon}</Icon>
+            <Icon onClick={removeTransaction}>{deleteIcon}</Icon>
+          </Edit>
         )}
 
       {active && (
@@ -98,13 +95,18 @@ export default RowTable
 
 const Icon = styled.button`
   background: none;
-  i {
-    margin-right: 0.5rem;
-    font-size: ${(props) => props.theme.mFont};
+  cursor: pointer;
+  svg {
     color: ${(props) => props.theme.black_500};
-    cursor: pointer;
     &:hover {
       color: red;
     }
   }
+`
+const Edit = styled.td`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 `
