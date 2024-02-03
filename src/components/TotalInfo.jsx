@@ -20,7 +20,7 @@ const Container = styled.article`
   align-content: center;
   justify-content: center;
   align-items: flex-end;
-  gap: 2rem;
+  gap: 1rem;
   width: 100%;
   background-color: ${(props) => props.theme.white};
   border-radius: 16px;
@@ -28,7 +28,7 @@ const Container = styled.article`
   text-align: right;
   border: 2px solid ${(props) => props.theme.black_400};
   h2 {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: ${(props) => props.theme.black_500};
     @media screen and (max-width: 480px) {
@@ -39,9 +39,6 @@ const Container = styled.article`
     font-size: 1.125rem;
     font-weight: bold;
     color: ${(props) => props.theme.black_400};
-  }
-  @media screen and (max-width: 480px) {
-    padding: 2rem 1rem 0.5rem;
   }
 `
 const Icon = styled.div`
