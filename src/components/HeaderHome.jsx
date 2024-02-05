@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import logo from '../assets/logo.svg'
+import { burgerIcon, closeIcon } from '../assets/icons/list-icons'
+import { BtnOpen } from '../style/StyleComponents'
 
 function HeaderHome() {
   const [active, setActive] = useState(false)
@@ -8,12 +9,9 @@ function HeaderHome() {
     <Container>
       <Navbar>
         <h1>EasyMoney</h1>
-        <IconOpen onClick={() => setActive(true)} className='uil uil-bars' />
+        <BtnOpen onClick={() => setActive(true)}>{burgerIcon}</BtnOpen>
         <List active={active}>
-          <IconClose
-            onClick={() => setActive(false)}
-            className='uil uil-times'
-          />
+          <IconClose onClick={() => setActive(false)}>{closeIcon}</IconClose>
           <Item onClick={() => setActive(false)}>
             <a href='#features'>Características</a>
           </Item>
@@ -89,28 +87,15 @@ const Item = styled.li`
     width: 100%;
   }
 `
-const IconClose = styled.i`
+const IconClose = styled.button`
   display: none;
+  align-items: center;
+  justify-content: center;
   color: ${(props) => props.theme.black_500};
-  font-size: 3rem;
+  font-size: 2rem;
+  background-color: transparent;
   cursor: pointer;
-  @media screen and (max-width: 780px) {
-    display: block;
-    position: absolute;
-    top: 2.5rem;
-    right: 1rem;
-  }
-  @media screen and (max-width: 480px) {
-    top: 0.5rem;
-    right: 0.6rem;
-  }
-`
-const IconOpen = styled.i`
-  display: none;
-  cursor: pointer;
-  color: ${(props) => props.theme.black_500};
-  font-size: ${(props) => props.theme.xlFont};
-  @media screen and (max-width: 768px) {
-    display: block;
+  @media screen and (max-width: 1140px) {
+    display: flex;
   }
 `
