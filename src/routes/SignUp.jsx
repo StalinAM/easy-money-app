@@ -3,6 +3,7 @@ import { registerUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Input, LabelInput } from '../style/StyleComponents'
+import { exclamationIcon } from '../assets/icons/list-icons'
 
 function SignUp() {
   const [name, setName] = useState('')
@@ -54,7 +55,7 @@ function SignUp() {
             </div>
             {error && (
               <ErrorMessage>
-                <i className='uil uil-exclamation-triangle' />
+                {exclamationIcon}
                 {error}
               </ErrorMessage>
             )}

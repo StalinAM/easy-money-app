@@ -3,6 +3,7 @@ import { loginUser } from '../firebase/services'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Input, LabelInput } from '../style/StyleComponents'
+import { exclamationIcon } from '../assets/icons/list-icons'
 
 function SignIn() {
   const [email, setEmail] = useState('')
@@ -20,11 +21,7 @@ function SignIn() {
       <Content>
         <Header>
           <h1>Iniciar sesión</h1>
-          <SigninRS>
-            <i className='uil uil-google'></i>
-            <i className='uil uil-github-alt'></i>
-            <i className='uil uil-microsoft'></i>
-          </SigninRS>
+          <SigninRS></SigninRS>
         </Header>
         <FormC onSubmit={signIn}>
           <BoxData>
@@ -58,7 +55,7 @@ function SignIn() {
             </div>
             {error && (
               <ErrorMessage>
-                <i className='uil uil-exclamation-triangle' />
+                {exclamationIcon}
                 {error}
               </ErrorMessage>
             )}
