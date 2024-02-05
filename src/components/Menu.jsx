@@ -70,7 +70,7 @@ const Container = styled.aside`
   padding: 1.5rem 1rem;
   height: 100%;
   img {
-    width: 15rem;
+    width: 13rem;
   }
   div {
     width: 100%;
@@ -96,7 +96,7 @@ const Header = styled.div`
   gap: 1rem;
   margin-bottom: 1rem;
   h1 {
-    font-size: ${(props) => props.theme.xlFont};
+    font-size: 1.75rem;
   }
   @media screen and (max-width: 1140px) {
     justify-content: space-between;
@@ -128,15 +128,18 @@ const LinlStyle = styled(Link)`
 `
 const IconClose = styled.button`
   display: none;
+  align-items: center;
+  justify-content: center;
   color: ${(props) => props.theme.black_500};
   font-size: 2rem;
+  background-color: transparent;
   cursor: pointer;
   @media screen and (max-width: 1140px) {
-    display: block;
+    display: flex;
   }
 `
 const Button = styled(Link)`
-  padding: 0.56rem 2rem;
+  padding: 0.56rem 1rem;
   border-radius: 12px;
   font-size: ${(props) => props.theme.mFont};
   background-color: ${(props) => props.theme.black_500};
