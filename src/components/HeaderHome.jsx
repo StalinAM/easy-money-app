@@ -95,7 +95,7 @@ const IconClose = styled.button`
   font-size: 2rem;
   background-color: transparent;
   cursor: pointer;
-  @media screen and (max-width: 1140px) {
+  @media screen and (max-width: 768px) {
     display: flex;
   }
 `

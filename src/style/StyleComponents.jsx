@@ -54,11 +54,11 @@ export const Content = styled.div`
 `
 export const BtnOpen = styled.button`
   display: none;
-
+  color: ${(props) => props.theme.black_500};
   width: 36px;
   height: 36px;
   background-color: transparent;
-  @media screen and (max-width: 1140px) {
+  @media screen and (max-width: 768px) {
     display: flex;
     justify-content: center;
     align-items: center;

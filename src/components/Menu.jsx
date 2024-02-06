@@ -76,14 +76,14 @@ const Container = styled.aside`
     width: 100%;
   }
   @media screen and (max-width: 1140px) {
+  }
+  @media screen and (max-width: 768px) {
     transform: ${(props) =>
       props.activeMenu ? 'translateX(0)' : 'translateX(-100%)'};
     position: fixed;
     left: 0;
     top: 0;
     z-index: 100;
-  }
-  @media screen and (max-width: 768px) {
     img {
       width: 11rem;
     }
@@ -134,7 +134,7 @@ const IconClose = styled.button`
   font-size: 2rem;
   background-color: transparent;
   cursor: pointer;
-  @media screen and (max-width: 1140px) {
+  @media screen and (max-width: 768px) {
     display: flex;
   }
 `
