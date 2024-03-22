@@ -43,8 +43,6 @@ La aplicación web de finanzas personales ofrece una amplia variedad de funcione
 - [Styled Components](https://styled-components.com)
 - [Vitejs](https://vitejs.dev/)
 - [Vercel](https://vercel.com)
-- Flexbox
-- CSS Grid
 
 ## Autor
 
