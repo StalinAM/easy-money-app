@@ -34,7 +34,7 @@ La aplicación web de finanzas personales ofrece una amplia variedad de funcione
 - Repositorio: [GitHub](https://github.com/StalinAM/easy-money-app)
 - Sitio en vivo: [EasyMoney](https://easy-money-app.vercel.app/)
 
-### Construido con
+### Herramientas
 
 - [JavaScript](https://www.javascript.com/)
 - [React](https://react.dev/)
